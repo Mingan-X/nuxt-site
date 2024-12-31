@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
   modules: ["@unocss/nuxt", "nuxtjs-naive-ui"],
+  css: ["@unocss/reset/tailwind-compat.css", "~/assets/css/base.less"],
   vite: {
     plugins: [
       AutoImport({
