@@ -5,3 +5,8 @@
     <n-button type="success"> Success </n-button>
   </div>
 </template>
+<script setup lang="ts">
+useHead({
+  title: "home - Jasper",
+});
+</script>

@@ -1,6 +1,7 @@
 <template>
   <!-- PC端 -->
   <n-menu
+    router
     class="mx-auto w-fit! py-4 text-16px"
     v-model:value="activeKey"
     mode="horizontal"
@@ -18,6 +19,7 @@ import {
   LibraryOutline,
   GridOutline,
 } from "@vicons/ionicons5";
+import { RouterLink } from "vue-router";
 
 const activeKey = ref(null);
 function renderIcon(icon: Component) {
@@ -32,12 +34,30 @@ function renderIcon(icon: Component) {
 }
 const menuOptions: MenuOption[] = [
   {
-    label: "Home",
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            name: "index",
+          },
+        },
+        { default: () => "Home" }
+      ),
     key: "Home",
     icon: renderIcon(HomeOutline),
   },
   {
-    label: "Blog",
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            name: "blog",
+          },
+        },
+        { default: () => "Blog" }
+      ),
     key: "Blog",
     icon: renderIcon(LibraryOutline),
   },
@@ -57,16 +77,40 @@ const menuOptions: MenuOption[] = [
     ],
   },
   {
-    label: "Favorite",
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            name: "favorite",
+          },
+        },
+        { default: () => "Favorite" }
+      ),
     key: "Favorite",
     icon: renderIcon(HeartOutline),
   },
   {
-    label: "About",
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            name: "about",
+          },
+        },
+        { default: () => "About" }
+      ),
     key: "About",
     icon: renderIcon(PersonOutline),
   },
 ];
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.n-menu.n-menu--horizontal {
+  :deep(.n-menu-item-content::before) {
+    display: initial !important;
+  }
+}
+</style>
