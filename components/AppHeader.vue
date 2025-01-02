@@ -7,6 +7,7 @@
     mode="horizontal"
     :options="menuOptions"
   />
+  <!-- 移动端 -->
 </template>
 
 <script setup lang="ts">
@@ -62,19 +63,18 @@ const menuOptions: MenuOption[] = [
     icon: renderIcon(LibraryOutline),
   },
   {
-    label: "Projects",
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            name: "project",
+          },
+        },
+        { default: () => "Projects" }
+      ),
     key: "Projects",
     icon: renderIcon(GridOutline),
-    children: [
-      {
-        label: "Project 1",
-        key: "Project 1",
-      },
-      {
-        label: "Project 2",
-        key: "Project 2",
-      },
-    ],
   },
   {
     label: () =>
