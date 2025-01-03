@@ -1,12 +1,15 @@
 <template>
   <!-- PC端 -->
-  <n-menu
-    router
-    class="mx-auto w-fit! py-4 text-16px"
-    v-model:value="activeKey"
-    mode="horizontal"
-    :options="menuOptions"
-  />
+  <div class="flex items-center py-4 px-12">
+    <n-menu
+      router
+      class="mx-auto w-fit! text-16px"
+      v-model:value="activeKey"
+      mode="horizontal"
+      :options="menuOptions"
+    />
+    <ColorMode />
+  </div>
   <!-- 移动端 -->
 </template>
 

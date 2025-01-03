@@ -22,6 +22,9 @@ dependencies:
     version: 4.5.0(vue@3.5.13)
 
 devDependencies:
+  '@nuxtjs/color-mode':
+    specifier: ^3.5.2
+    version: 3.5.2
   '@unocss/nuxt':
     specifier: ^0.65.3
     version: 0.65.3(postcss@8.4.49)(vite@6.0.6)(vue@3.5.13)(webpack@5.97.1)
@@ -1366,6 +1369,19 @@ packages:
       - vue-tsc
       - yaml
     dev: false
+
+  /@nuxtjs/color-mode@3.5.2:
+    resolution: {integrity: sha512-cC6RfgZh3guHBMLLjrBB2Uti5eUoGM9KyauOaYS9ETmxNWBMTvpgjvSiSJp1OFljIXPIqVTJ3xtJpSNZiO3ZaA==}
+    dependencies:
+      '@nuxt/kit': 3.15.0(magicast@0.3.5)
+      pathe: 1.1.2
+      pkg-types: 1.2.1
+      semver: 7.6.3
+    transitivePeerDependencies:
+      - magicast
+      - rollup
+      - supports-color
+    dev: true
 
   /@parcel/watcher-android-arm64@2.5.0:
     resolution: {integrity: sha512-qlX4eS28bUcQCdribHkg/herLe+0A9RyYC+mm2PXpncit8z5b3nSqGVzMNR3CmtAOgRutiZ02eIJJgP/b1iEFQ==}

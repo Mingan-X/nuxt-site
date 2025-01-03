@@ -7,6 +7,7 @@
     />
   </div>
 </template>
+<script setup lang="ts"></script>
 <style>
 @keyframes loaderBefore {
   0% {
