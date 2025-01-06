@@ -1,6 +1,6 @@
 <template>
   <NuxtParticles
-    v-show="$colorMode.value === 'dark'"
+    v-show="$colorMode.preference === 'dark'"
     id="tsparticles-dark"
     :options="bgOptions.dark"
     @load="onLoad"

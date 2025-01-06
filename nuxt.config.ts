@@ -13,8 +13,6 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
   ],
   colorMode: {
-    preference: "system", // default value of $colorMode.preference
-    fallback: "light", // fallback value if not system preference found
     hid: "nuxt-color-mode-script",
     globalName: "__NUXT_COLOR_MODE__",
     componentName: "ColorScheme",
@@ -22,7 +20,11 @@ export default defineNuxtConfig({
     classSuffix: "",
     storageKey: "nuxt-color-mode",
   },
-  css: ["@unocss/reset/tailwind-compat.css", "~/assets/css/base.less"],
+  css: [
+    "@unocss/reset/tailwind-compat.css",
+    "~/assets/css/base.less",
+    "~/assets/css/themes.less",
+  ],
   vite: {
     plugins: [
       AutoImport({
@@ -41,5 +43,13 @@ export default defineNuxtConfig({
         resolvers: [NaiveUiResolver()],
       }),
     ],
+    // css: {
+    //   preprocessorOptions: {
+    //     less: {
+    //       additionalData: '@import "~/assets/css/_colors.less";',
+    //       javascriptEnabled: true,
+    //     },
+    //   },
+    // },
   },
 });

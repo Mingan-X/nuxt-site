@@ -1,26 +1,27 @@
 <template>
   <n-tooltip trigger="hover">
     <template #trigger>
-      <n-button circle text @click="toggleDark">
+      <n-button class="bg-[var(--bg-color)]" circle text @click="toggleDark">
         <n-icon
           size="20"
           color="#94a3b8"
-          :component="$colorMode.value === 'dark' ? MoonOutline : SunnyOutline"
+          :component="isDarkIcon ? MoonOutline : SunnyOutline"
         />
       </n-button>
     </template>
-    切换{{ $colorMode.value === "dark" ? "白天" : "黑夜" }}模式
+    切换{{ $colorMode.preference === "dark" ? "白天" : "黑夜" }}模式
   </n-tooltip>
 </template>
 
 <script setup lang="ts">
 import { SunnyOutline, MoonOutline } from "@vicons/ionicons5";
 const colorMode = useColorMode();
+const isDarkIcon = ref(false);
 
 // 切换模式
 const setColorMode = () => {
-  colorMode.value = colorMode.value === "dark" ? "light" : "dark";
-  localStorage.setItem("color-mode", colorMode.value);
+  colorMode.preference = colorMode.preference === "dark" ? "light" : "dark";
+  isDarkIcon.value = !isDarkIcon.value;
 };
 
 // 判断是否支持 startViewTransition API
@@ -30,8 +31,7 @@ const enableTransitions = () =>
 
 // 切换动画
 async function toggleDark({ clientX: x, clientY: y }: MouseEvent) {
-  const isDark = colorMode.value === "dark";
-
+  const isDark = colorMode.preference === "dark";
   if (!enableTransitions()) {
     setColorMode();
     return;
@@ -43,8 +43,6 @@ async function toggleDark({ clientX: x, clientY: y }: MouseEvent) {
       Math.max(y, innerHeight - y)
     )}px at ${x}px ${y}px)`,
   ];
-  console.log(clipPath, isDark);
-
   await document.startViewTransition(async () => {
     setColorMode();
     await nextTick();
@@ -61,10 +59,9 @@ async function toggleDark({ clientX: x, clientY: y }: MouseEvent) {
 }
 
 onMounted(() => {
-  const mode = localStorage.getItem("color-mode");
-  if (mode) {
-    colorMode.value = mode;
-  }
+  !colorMode.unknown && colorMode.preference === "dark"
+    ? (isDarkIcon.value = true)
+    : (isDarkIcon.value = false);
 });
 </script>
 

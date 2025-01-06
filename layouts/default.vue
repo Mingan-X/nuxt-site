@@ -1,7 +1,6 @@
 <template>
-  <div>
+  <div class="min-h-100vh flex flex-col">
     <AppHeader />
-    <p>默认布局</p>
     <slot />
     <AppFooter />
   </div>
