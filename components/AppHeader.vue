@@ -1,6 +1,7 @@
 <template>
   <!-- PC端 -->
   <div class="flex items-center py-4 px-12">
+    <Logo />
     <n-menu
       router
       class="mx-auto w-fit! text-16px"
