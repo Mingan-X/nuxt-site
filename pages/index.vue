@@ -10,17 +10,28 @@
       >
     </div>
     <div class="flex flex-col items-center justify-center flex-1">
-      <img
-        class="w-200px h-200px rounded-50% gif-animation"
-        src="../assets/images/avatar.gif"
-        alt=""
-      />
+      <div class="relative">
+        <img
+          ref="source"
+          class="w-200px h-200px rounded-50% opacity-0"
+          src="../assets/images/avatar.gif"
+          alt=""
+        />
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+      </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 useHead({
-  title: "首页 - Jasper",
+  title: "Jasper",
+});
+const source = ref<HTMLImageElement | null>(null);
+onMounted(() => {
+  // 重绘gif
+  if (source.value) useRenderGif(source.value);
 });
 </script>
 <style scoped lang="less">
@@ -37,8 +48,59 @@ useHead({
   top: 0;
   z-index: -1;
 }
-.gif-animation {
-  animation-duration: 60s; /* 设置GIF动画的播放时间为10秒 */
-  animation-timing-function: linear; /* 设置动画速度为匀速 */
+/* 扩散动画 */
+.circle1,
+.circle2,
+.circle3 {
+  z-index: -2;
+  width: 200px;
+  height: 200px;
+  background: #c7cfda;
+  border: 1px solid #94a3b8;
+  border-radius: 999px;
+  position: absolute;
+  top: calc(50% - 100px);
+  left: calc(50% - 100px);
+}
+.circle1,
+.circle2,
+.circle3 {
+  /* animation: circleChange 2s 1s ease-out infinite; */
+  animation-name: circleChange;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.circle1 {
+  animation-delay: 1s;
+}
+.circle2 {
+  animation-delay: 2s;
+}
+.circle3 {
+  animation-delay: 3s;
+}
+
+@keyframes circleChange {
+  0% {
+    transform: scale(1);
+    opacity: 0.25;
+  }
+  25% {
+    transform: scale(1.05);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.15;
+  }
+  75% {
+    transform: scale(1.15);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.05;
+  }
 }
 </style>
