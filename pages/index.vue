@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-1">
+  <div class="flex flex-1 overflow-hidden">
     <div
       class="position-relative left_content flex flex-col items-center justify-center flex-1 gap-4"
     >
-      <span class="text-40px font-bold">Hi，I am Japer</span>
+      <span class="text-40px font-bold">Hi，I am Jasper</span>
       <span class="text-20px">web developer</span>
       <span
         >「现实是此岸，理想是彼岸，中间隔着湍急的河流，行动则是架在河上的桥梁」</span
@@ -29,9 +29,27 @@ useHead({
   title: "Jasper",
 });
 const source = ref<HTMLImageElement | null>(null);
+/**头像悬浮开启涟漪动画 */
+const startAnimation = () => {
+  const list = [".circle1", ".circle2", ".circle3"];
+  const domList = list.map((item) => document.querySelector(item));
+  source.value?.addEventListener("mouseenter", () => {
+    domList.forEach((item) => {
+      item?.classList.add("hovered");
+    });
+  });
+  source.value?.addEventListener("mouseleave", () => {
+    domList.forEach((item) => {
+      item?.classList.remove("hovered");
+    });
+  });
+};
 onMounted(() => {
   // 重绘gif
-  if (source.value) useRenderGif(source.value);
+  if (source.value) {
+    useRenderGif(source.value); // canvas渲染gif
+    startAnimation();
+  }
 });
 </script>
 <style scoped lang="less">
@@ -52,19 +70,17 @@ onMounted(() => {
 .circle1,
 .circle2,
 .circle3 {
-  z-index: -2;
+  z-index: -1;
   width: 200px;
   height: 200px;
   background: #c7cfda;
-  border: 1px solid #94a3b8;
-  border-radius: 999px;
+  border: 1px solid transparent;
+  border-radius: 50%;
   position: absolute;
   top: calc(50% - 100px);
   left: calc(50% - 100px);
 }
-.circle1,
-.circle2,
-.circle3 {
+.hovered {
   /* animation: circleChange 2s 1s ease-out infinite; */
   animation-name: circleChange;
   animation-duration: 3s;
@@ -72,13 +88,13 @@ onMounted(() => {
   animation-timing-function: linear;
 }
 .circle1 {
-  animation-delay: 1s;
+  animation-delay: 0s;
 }
 .circle2 {
-  animation-delay: 2s;
+  animation-delay: 1s;
 }
 .circle3 {
-  animation-delay: 3s;
+  animation-delay: 2s;
 }
 
 @keyframes circleChange {

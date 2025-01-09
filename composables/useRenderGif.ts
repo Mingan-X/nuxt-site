@@ -46,6 +46,7 @@ export default function (dom: HTMLImageElement) {
             renderImage(nextResult);
           }, result.image.duration / 1000.0);
         } else {
+          // @ts-ignore
           canvas.nextResult = nextResult;
         }
       })
@@ -60,41 +61,43 @@ export default function (dom: HTMLImageElement) {
       });
   };
 
-  // 判断地址能够请求
-  fetch(src).then((response) => {
-    // 可以请求，进行样式处理
-    // 设置canvas尺寸
-    canvas.width = dom.naturalWidth;
-    canvas.height = dom.naturalHeight;
-    // 实际显示尺寸
-    canvas.style.width = dom.clientWidth + "px";
-    canvas.style.height = dom.clientHeight + "px";
-    // 隐藏图片，显示画布
-    dom.after(canvas);
-    dom.style.position = "absolute";
-    dom.style.opacity = "0";
-    context?.scale(
-      canvas.width / dom.clientWidth,
-      canvas.height / dom.clientHeight
-    );
-
-    // 将GIF绘制在canvas上
-    imageDecoder = new ImageDecoder({
-      data: response.body,
-      type: "image/gif",
+  nextTick(() => {
+    // 判断地址能够请求
+    fetch(src).then((response) => {
+      // 可以请求，进行样式处理
+      // 设置canvas尺寸
+      canvas.width = dom.naturalWidth;
+      canvas.height = dom.naturalHeight;
+      // 实际显示尺寸
+      canvas.style.width = dom.clientWidth + "px";
+      canvas.style.height = dom.clientHeight + "px";
+      // 隐藏图片，显示画布
+      dom.after(canvas);
+      dom.style.position = "absolute";
+      dom.style.opacity = "0";
+      context?.scale(
+        canvas.width / dom.clientWidth,
+        canvas.height / dom.clientHeight
+      );
+      // 将GIF绘制在canvas上
+      // @ts-ignore
+      imageDecoder = new ImageDecoder({
+        data: response.body,
+        type: "image/gif",
+      });
+      // 解析第一帧并绘制
+      imageDecoder
+        .decode({
+          frameIndex: imageIndex,
+        })
+        .then(renderImage);
     });
-    // 解析第一帧并绘制
-    imageDecoder
-      .decode({
-        frameIndex: imageIndex,
-      })
-      .then(renderImage);
   });
-
   // 事件绑定处理
   dom.addEventListener("mouseenter", function () {
     if (paused) {
       paused = false;
+      // @ts-ignore
       renderImage(canvas.nextResult);
     }
   });
