@@ -1,24 +1,20 @@
-# Job name has to be `pages`. See https://docs.gitlab.com/ee/user/project/pages/#how-it-works
+# 运行程序的 Docker 镜像，使用 nodejs 最新稳定版
+image: node:lts
+
+# 运行 Job 之前的脚本，安装依赖
+before_script:
+  - npm install
+
+# Job 名称为 pages 是 Gitlab 约定的，不可修改
 pages:
-   image: node
-   before_script:
-      - npm ci --cache .npm --prefer-offline
-   script:
-      # Specify the steps involved to build your app here
-      - npm run generate
-   cache: # https://docs.gitlab.com/ee/ci/caching/#cache-nodejs-dependencies
-      key:
-         files:
-         - package-lock.json
-      paths:
-         - .npm/
-   artifacts:
-      paths:
-         # The directory that contains the built files to be published
-         - .output/public
-   # The directory that contains the built files to be published
-   publish: .output/public
-   rules:
-      # This ensures that only pushes to the default branch 
-      # will trigger a pages deploy
-      - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  script:
+    # 编译代码，生成产物目录默认为 dist 目录
+    - npm run generate
+    # 将 dist 目录名修改为 public
+    - mv dist public
+  artifacts:
+    paths:
+      - public
+  rules:
+    # main 分支有更新时自动部署静态网站
+    - master
