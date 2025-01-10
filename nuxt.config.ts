@@ -8,6 +8,16 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     pageTransition: { name: "page", mode: "out-in" },
+    head: {
+      charset: "utf-8",
+      meta: [
+        {
+          name: "viewport",
+          content:
+            "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+        },
+      ],
+    },
   },
   modules: [
     "@unocss/nuxt",

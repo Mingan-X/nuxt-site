@@ -71,10 +71,13 @@ export default function (dom: HTMLImageElement) {
       // 实际显示尺寸
       canvas.style.width = dom.clientWidth + "px";
       canvas.style.height = dom.clientHeight + "px";
+      canvas.style.position = "relative";
+      canvas.style.zIndex = "99";
       // 隐藏图片，显示画布
       dom.after(canvas);
       dom.style.position = "absolute";
       dom.style.opacity = "0";
+      dom.style.zIndex = "999";
       context?.scale(
         canvas.width / dom.clientWidth,
         canvas.height / dom.clientHeight

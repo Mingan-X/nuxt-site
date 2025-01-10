@@ -1,15 +1,20 @@
 <template>
   <!-- PC端 -->
-  <div class="flex items-center py-4 px-12">
+  <div class="flex items-center py-4 md:px-12 max-md:px-4">
     <Logo />
     <n-menu
       router
-      class="mx-auto w-fit! text-16px"
+      class="max-md:hidden! mx-auto w-fit! text-16px"
       v-model:value="activeKey"
       mode="horizontal"
       :options="menuOptions"
     />
-    <ColorMode />
+    <div class="max-md:flex-1 flex items-center justify-end">
+      <n-dropdown trigger="click" :options="menuOptions">
+        <n-icon class="md:hidden! mr-8px" :size="26"><Menu /></n-icon>
+      </n-dropdown>
+      <ColorMode />
+    </div>
   </div>
   <!-- 移动端 -->
 </template>
@@ -23,6 +28,7 @@ import {
   PersonOutline,
   LibraryOutline,
   GridOutline,
+  Menu,
 } from "@vicons/ionicons5";
 import { RouterLink } from "vue-router";
 

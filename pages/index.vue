@@ -1,15 +1,15 @@
 <template>
-  <div class="flex flex-1 overflow-hidden">
+  <div class="flex flex-1 max-md:flex-col">
     <div
       class="position-relative left_content flex flex-col items-center justify-center flex-1 gap-4"
     >
       <span class="text-40px font-bold">Hi，I am Jasper</span>
       <span class="text-20px">web developer</span>
-      <span
+      <span class="text-center"
         >「现实是此岸，理想是彼岸，中间隔着湍急的河流，行动则是架在河上的桥梁」</span
       >
     </div>
-    <div class="flex flex-col items-center justify-center flex-1">
+    <div class="flex flex-col items-center justify-center flex-1 min-w-200px">
       <div class="relative">
         <img
           ref="source"
@@ -57,6 +57,7 @@ onMounted(() => {
   background-image: url(../assets/images/bg.png);
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
   bottom: 0;
   content: "";
   left: 0;
@@ -64,17 +65,15 @@ onMounted(() => {
   position: absolute;
   right: 0;
   top: 0;
-  z-index: -1;
 }
 /* 扩散动画 */
 .circle1,
 .circle2,
 .circle3 {
-  z-index: -1;
+  z-index: 0;
   width: 200px;
   height: 200px;
-  background: #c7cfda;
-  border: 1px solid transparent;
+  background: var(--circle-color);
   border-radius: 50%;
   position: absolute;
   top: calc(50% - 100px);
@@ -91,10 +90,10 @@ onMounted(() => {
   animation-delay: 0s;
 }
 .circle2 {
-  animation-delay: 1s;
+  animation-delay: 1.25s;
 }
 .circle3 {
-  animation-delay: 2s;
+  animation-delay: 2.25s;
 }
 
 @keyframes circleChange {
