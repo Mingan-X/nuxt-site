@@ -1,0 +1,1 @@
+import{u as e}from"./DM8lAIoM.js";import{d as t,o,c as a}from"./X47QyHmP.js";const p=t({__name:"favorite",setup(r){return e({title:"favorite - Jasper"}),(n,s)=>(o(),a("div",null,"Favorite"))}});export{p as default};
