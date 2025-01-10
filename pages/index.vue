@@ -54,7 +54,7 @@ onMounted(() => {
 </script>
 <style scoped lang="less">
 .left_content::before {
-  background-image: url(../assets/images/1.jpg);
+  background-image: url(../assets/images/bg.png);
   background-repeat: no-repeat;
   background-size: contain;
   bottom: 0;
