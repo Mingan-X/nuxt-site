@@ -1,24 +1,20 @@
-# Job name必须为`pages`，详见https://docs.gitlab.com/ee/user/project/pages/#how-it-works
 pages:
-   image: node
-   before_script:
-      - corepack enable
-      - pnpm install --frozen-lockfile
-   script:
-      # 指定构建应用的步骤
-      - pnpm generate
-   cache: # https://docs.gitlab.com/ee/ci/caching/#cache-nodejs-dependencies
-      key:
-         files:
-         - pnpm-lock.yaml
-      paths:
-         - .pnpm/
-   artifacts:
-      paths:
-         # 包含构建文件的目录
-         - .output/public
-   # 包含构建文件的目录
-   publish: .output/public
-   rules:
-      # 仅当推送到默认分支时，才会触发pages部署
-      - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  image: node
+  before_script:
+    - apt-get update && apt-get install -y python3 g++ make
+    - corepack enable
+    - pnpm install --frozen-lockfile
+  script:
+    - pnpm generate
+  cache:
+    key:
+      files:
+        - pnpm-lock.yaml
+    paths:
+      - .pnpm/
+  artifacts:
+    paths:
+      - .output/public
+  publish: .output/public
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
