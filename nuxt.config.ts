@@ -24,7 +24,10 @@ export default defineNuxtConfig({
     "nuxtjs-naive-ui",
     "nuxt-particles",
     "@nuxtjs/color-mode",
+    "@nuxt/content",
   ],
+  // nuxt/content 配置
+  content: {},
   colorMode: {
     hid: "nuxt-color-mode-script",
     globalName: "__NUXT_COLOR_MODE__",

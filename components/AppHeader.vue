@@ -1,7 +1,7 @@
 <template>
   <!-- PC端 -->
   <div class="flex items-center py-4 md:px-12 max-md:px-4">
-    <Logo />
+    <Logo @click="$router.push('/')" class="cursor-pointer" />
     <n-menu
       router
       class="max-md:hidden! mx-auto w-fit! text-16px"

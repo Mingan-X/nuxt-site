@@ -1,5 +1,8 @@
 <template>
-  <div>Blog</div>
+  <div>
+    Blog
+    <NuxtPage />
+  </div>
 </template>
 
 <script setup lang="ts">
