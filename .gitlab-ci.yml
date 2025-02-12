@@ -1,5 +1,5 @@
 pages:
-  image: node:lts
+  image: node:lateset
   before_script:
     - corepack enable
     - npm install
