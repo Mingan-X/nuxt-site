@@ -1,18 +1,16 @@
 pages:
-  image: node:lateset
+  image: node:latest
   before_script:
     - corepack enable
     - npm install
+  script:
+    - npm run generate --debug
   cache:
     key:
       files:
         - package-lock.json
     paths:
       - node_modules/
-  variables:
-    NITRO_PRESET: gitlab_pages
-  script:
-    - npm run generate
   artifacts:
     paths:
       - .output/public
