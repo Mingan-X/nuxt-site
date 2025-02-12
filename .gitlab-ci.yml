@@ -1,17 +1,18 @@
 pages:
-  image: node
+  image: node:lts
   before_script:
-    - apt-get update && apt-get install -y python3 g++ make
     - corepack enable
-    - pnpm install --frozen-lockfile
-  script:
-    - pnpm generate
+    - npm install
   cache:
     key:
       files:
-        - pnpm-lock.yaml
+        - package-lock.json
     paths:
-      - .pnpm/
+      - node_modules/
+  variables:
+    NITRO_PRESET: gitlab_pages
+  script:
+    - npm run generate
   artifacts:
     paths:
       - .output/public

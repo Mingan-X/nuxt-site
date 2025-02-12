@@ -6,6 +6,14 @@ import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
+  build: {
+    analyze: true, // 启用构建分析，帮助找出可能的错误
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: false, // 禁用爬虫抓取，可以逐一定位问题
+    },
+  },
   app: {
     pageTransition: { name: "page", mode: "out-in" },
     head: {
