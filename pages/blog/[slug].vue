@@ -1,6 +1,6 @@
 <template>
   <!-- Render the blog post as Prose & Vue components -->
-  <ContentRenderer v-if="post" :value="post" />
+  <ContentRenderer v-if="post" :value="post" class="prose" />
 </template>
 
 <script setup lang="ts">

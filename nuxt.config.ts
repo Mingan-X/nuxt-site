@@ -35,7 +35,36 @@ export default defineNuxtConfig({
     "@nuxt/content",
   ],
   // nuxt/content 配置
-  content: {},
+  content: {
+    build: {
+      markdown: {
+        highlight: {
+          theme: {
+            // Default theme (same as single string)
+            default: "github-light",
+            // Theme used if `html.dark`
+            dark: "github-dark",
+            // Theme used if `html.sepia`
+            light: "monokai",
+          },
+          langs: [
+            "typescript",
+            "vue",
+            "javascript",
+            "go",
+            "shell",
+            "bash",
+            "yaml",
+            "markdown",
+            "json",
+            "html",
+            "ts",
+            "js",
+          ],
+        },
+      },
+    },
+  },
   colorMode: {
     hid: "nuxt-color-mode-script",
     globalName: "__NUXT_COLOR_MODE__",
@@ -48,6 +77,7 @@ export default defineNuxtConfig({
     "@unocss/reset/tailwind-compat.css",
     "~/assets/css/base.less",
     "~/assets/css/themes.less",
+    "~/assets/css/md.less",
   ],
   vite: {
     plugins: [
