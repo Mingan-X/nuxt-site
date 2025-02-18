@@ -1,6 +1,5 @@
 <template>
   <div>
-    Blog
     <NuxtPage />
   </div>
 </template>
