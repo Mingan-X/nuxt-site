@@ -157,11 +157,11 @@
     font-weight: 400;
     color: unset;
     line-height: 1.6;
+    background: none;
   }
-  code[class*="language-js"],
-  pre[class*="language-js"],
-  pre[class*="language-sequence"],
-  pre[class*="language-flow"] {
+  code[class*="language-"],
+  pre[class*="language-"],
+  pre:not(.language-text) {
     color: #f8f8f2;
     background: none;
     text-shadow: 0 1px rgba(0, 0, 0, 0.3);
@@ -188,9 +188,7 @@
     border-radius: 6px;
   }
   :not(pre) > code[class*="language-js"],
-  pre[class*="language-js"],
-  pre[class*="language-sequence"],
-  pre[class*="language-flow"] {
+  pre[class*="language-"] {
     background: #272822;
   }
   img {
