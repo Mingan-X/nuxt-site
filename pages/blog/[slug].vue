@@ -1,4 +1,5 @@
 <template>
+  <ArticleToc class="hidden md:block" :toc="toc" />
   <!-- Render the blog post as Prose & Vue components -->
   <ContentRenderer v-if="post" :value="post" class="prose md" />
 </template>
@@ -34,4 +35,6 @@ console.log(data, "queryCollectionNavigation");
 console.log(data1, "queryCollectionItemSurroundings");
 console.log(surround, "queryCollectionSearchSections");
 console.log(post, "queryCollection");
+// @ts-ignore
+const toc = buildFullToc(post.value?.body.value) || [];
 </script>
