@@ -1,7 +1,12 @@
 <template>
-  <ArticleToc class="hidden md:block" :toc="toc" />
-  <!-- Render the blog post as Prose & Vue components -->
-  <ContentRenderer v-if="post" :value="post" class="prose md" />
+  <div id="article_page" class="flex">
+    <ArticleToc
+      class="hidden fixed position-right-8xl position-top-[8rem] lg:block max-w-200px overflow-hidden whitespace-nowrap text-ellipsis"
+      :toc="toc"
+    />
+    <!-- Render the blog post as Prose & Vue components -->
+    <ContentRenderer v-if="post" :value="post" class="prose md" />
+  </div>
 </template>
 
 <script setup lang="ts">

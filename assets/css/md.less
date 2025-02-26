@@ -7,26 +7,18 @@
   text-decoration: none !important;
 }
 // markdown 样式
-.light .md {
+.md {
   min-width: 320px;
   word-break: break-all;
   line-height: 1.8em;
   font-size: 16px;
-  color: #595959;
+  color: var(--md-content-color) !important;
   h1,
   h2 {
-    border-left-color: #5a67d8;
-    border-bottom-color: #5a67d8;
-    border-left-style: solid;
-    border-bottom-style: solid;
-    border-top: 0 solid #5a67d8;
-    border-right: 0 solid #5a67d8;
     font-weight: 500;
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
-    padding-left: 0.75rem;
     border-bottom: 1px solid #eaecef !important;
-    border-left-width: 6px;
   }
   h3 {
     display: block;
@@ -74,6 +66,7 @@
   h5,
   h6 {
     a {
+      color: var(--md-content-color);
       text-decoration: none;
       border-bottom: none;
     }
@@ -93,9 +86,8 @@
     border-left: 0.25em solid;
     margin-bottom: 1rem;
     margin-left: 0;
-    background-color: #ebf4ff;
-    border-color: #7f9cf5;
-    color: #667eea;
+    background-color: var(--md-blockquote-bg-color);
+    color: var(--md-blockquote-color);
   }
   ul,
   ol {
@@ -116,7 +108,7 @@
   a,
   code,
   strong {
-    color: #5a67d8;
+    color: var(--md-text-color);
   }
   strong:before {
     content: "「";
@@ -129,7 +121,7 @@
     border-bottom: 1px solid;
   }
   code {
-    background-color: #ebf4ff;
+    background-color: var(--md-code-bg-color);
   }
   pre {
     display: block;
@@ -190,7 +182,7 @@
   }
   :not(pre) > code[class*="language-js"],
   pre[class*="language-"] {
-    background: #272822;
+    background: var(--md-pre-bg-color);
   }
   img {
     overflow-clip-margin: content-box;
