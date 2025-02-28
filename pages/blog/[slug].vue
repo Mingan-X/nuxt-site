@@ -1,7 +1,7 @@
 <template>
   <div id="article_page" class="flex">
     <ArticleToc
-      class="hidden fixed position-right-8xl position-top-[8rem] lg:block max-w-200px overflow-hidden whitespace-nowrap text-ellipsis"
+      class="hidden fixed position-right-7xl position-top-[6rem] lg:block w-220px h-[calc(100%-6rem)] overflow-y-auto"
       :toc="toc"
     />
     <!-- Render the blog post as Prose & Vue components -->

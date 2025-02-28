@@ -108,7 +108,7 @@ export default defineNuxtConfig({
     // css: {
     //   preprocessorOptions: {
     //     less: {
-    //       additionalData: '@import "~/assets/css/_colors.less";',
+    //       additionalData: '@import "~/assets/css/themes.less";',
     //       javascriptEnabled: true,
     //     },
     //   },

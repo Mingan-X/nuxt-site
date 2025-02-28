@@ -7,7 +7,7 @@
             <span
               class="cursor-pointer hover:underline"
               @click="$router.push(item.path)"
-              >{{ item.showTitle }}</span
+              >{{ item?.showTitle }}</span
             >
           </template>
           <template #footer>

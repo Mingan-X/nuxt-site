@@ -1,9 +1,9 @@
-export function buildFullToc(markdownNodes: any[]) {
+export function buildFullToc(markdownNodes: any[], depth: number = 3) {
   const toc: any = [];
   const stack: any = [];
 
   markdownNodes.forEach((node) => {
-    if (node[0].startsWith("h")) {
+    if (node[0].startsWith("h") && parseInt(node[0].substring(1)) <= depth) {
       const depth = parseInt(node[0].substring(1));
       const entry = {
         id: node[1].id,
