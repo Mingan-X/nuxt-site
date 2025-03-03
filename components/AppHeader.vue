@@ -13,6 +13,7 @@
       <n-dropdown trigger="click" :options="menuOptions">
         <n-icon class="md:hidden! mr-8px" :size="26"><Menu /></n-icon>
       </n-dropdown>
+      <Search />
       <ColorMode />
     </div>
   </div>

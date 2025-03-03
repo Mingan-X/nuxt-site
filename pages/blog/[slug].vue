@@ -29,16 +29,9 @@ const { data: data1 } = await useAsyncData("surround", () => {
   return queryCollectionItemSurroundings("blog", "/blog/test");
 });
 
-const { data: surround } = await useAsyncData("foo-surround", () => {
-  return queryCollectionSearchSections("blog", {
-    ignoredTags: ["code"],
-  });
-});
-
-// console.log(data, "queryCollectionNavigation");
-// console.log(data1, "queryCollectionItemSurroundings");
-// console.log(surround, "queryCollectionSearchSections");
-// console.log(post, "queryCollection");
+console.log(data, "queryCollectionNavigation");
+console.log(data1, "queryCollectionItemSurroundings");
+console.log(post, "queryCollection");
 // @ts-ignore
 const toc = buildFullToc(post.value?.body.value) || [];
 </script>
