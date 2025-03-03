@@ -36,10 +36,9 @@ useHead({
   title: "blog - Jasper",
 });
 
-const { data: articles } = await useAsyncData(useRoute().path, () => {
+const { data: articles } = await useAsyncData(`blog-${useRoute().path}`, () => {
   return queryCollection("blog").all();
 });
-console.log(articles);
 </script>
 
 <style scoped lang="less"></style>

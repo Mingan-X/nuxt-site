@@ -37,11 +37,7 @@ export default defineNuxtConfig({
   // nuxt/content 配置
   content: {
     renderer: {
-      anchorLinks: {
-        h1: true,
-        h2: true,
-        h3: true,
-      },
+      anchorLinks: false,
     },
     build: {
       markdown: {

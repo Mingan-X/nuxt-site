@@ -5,7 +5,7 @@
   >
     <span
       class="cursor-pointer block overflow-hidden text-nowrap text-ellipsis hover:overflow-visible hover:text-wrap"
-      @click="navigateTo(`#${item.id}`, { replace: true })"
+      @click="goAnchor(item.id)"
       >{{ item.text }}</span
     >
     <ul v-if="item.children.length > 0">
@@ -21,6 +21,13 @@ interface TocItem {
   depth: number;
   children: TocItem[];
 }
+
+const goAnchor = (id: string) => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
 
 defineProps<{
   item: TocItem;

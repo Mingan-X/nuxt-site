@@ -14,10 +14,9 @@ definePageMeta({
   hideParent: true,
 });
 
-const { data: post } = await useAsyncData(useRoute().path, () => {
+const { data: post } = await useAsyncData(`article-${useRoute().path}`, () => {
   return queryCollection("blog").path(useRoute().path).first();
 });
-
 useHead({
   title: post.value?.showTitle || post.value?.title,
 });
@@ -36,10 +35,10 @@ const { data: surround } = await useAsyncData("foo-surround", () => {
   });
 });
 
-console.log(data, "queryCollectionNavigation");
-console.log(data1, "queryCollectionItemSurroundings");
-console.log(surround, "queryCollectionSearchSections");
-console.log(post, "queryCollection");
+// console.log(data, "queryCollectionNavigation");
+// console.log(data1, "queryCollectionItemSurroundings");
+// console.log(surround, "queryCollectionSearchSections");
+// console.log(post, "queryCollection");
 // @ts-ignore
 const toc = buildFullToc(post.value?.body.value) || [];
 </script>
