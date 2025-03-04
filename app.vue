@@ -13,6 +13,7 @@
 
 <script setup lang="ts">
 import themeOverrides from "@/utils/theme";
+import { darkTheme } from "naive-ui";
 
 const theme = ref();
 const nuxtApp = useNuxtApp();
@@ -22,6 +23,7 @@ nuxtApp.hook("page:start", () => {
   isFullLoading.value = true;
 });
 nuxtApp.hook("page:finish", () => {
+  theme.value = useColorMode().preference === "dark" ? darkTheme : "";
   isFullLoading.value = false;
 });
 </script>

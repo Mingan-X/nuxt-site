@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@css-render/vue3-ssr':
+    specifier: ^0.15.14
+    version: 0.15.14(vue@3.5.13)
   '@nuxt/content':
     specifier: ^3.1.0
     version: 3.1.0(typescript@5.7.3)

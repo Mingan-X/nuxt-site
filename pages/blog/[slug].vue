@@ -5,7 +5,11 @@
       :toc="toc"
     />
     <!-- Render the blog post as Prose & Vue components -->
-    <ContentRenderer v-if="post" :value="post" class="prose md" />
+    <ContentRenderer
+      v-if="post"
+      :value="post"
+      class="prose md md:max-w-65ch!"
+    />
   </div>
 </template>
 

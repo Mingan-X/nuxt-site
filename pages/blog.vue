@@ -5,7 +5,7 @@
         <n-card class="w-80vw md:w-45vw" v-for="item in articles" hoverable>
           <template #header>
             <span
-              class="cursor-pointer hover:underline"
+              class="cursor-pointer hover:underline text-ellipsis line-clamp-2"
               @click="$router.push(item.path)"
               >{{ item?.title }}</span
             >
