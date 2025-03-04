@@ -1,6 +1,6 @@
 ---
 date: 2023-04-17
-showTitle: JS验证码校验
+title: JS验证码校验
 ---
 
 # 前言

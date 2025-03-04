@@ -1,6 +1,6 @@
 ---
 date: 2023-04-12
-showTitle: JS之节流函数
+title: JS之节流函数
 ---
 
 # 前言

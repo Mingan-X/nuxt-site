@@ -1,6 +1,6 @@
 ---
 date: 2023-05-04
-showTitle: 如何使用Canvas绘制一个立方体
+title: 如何使用Canvas绘制一个立方体
 ---
 
 # 前言

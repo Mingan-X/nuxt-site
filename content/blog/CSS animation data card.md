@@ -1,6 +1,6 @@
 ---
 date: 2023-04-29
-showTitle: css动画资料卡片
+title: css动画资料卡片
 ---
 
 # 前言

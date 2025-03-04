@@ -1,8 +1,5 @@
 <template>
-  <n-config-provider
-    :theme-overrides="themeOverrides"
-    :theme="$colorMode.preference === 'dark' ? darkTheme : null"
-  >
+  <n-config-provider :theme-overrides="themeOverrides" :theme="theme">
     <!-- 首页加载全屏动画 -->
     <FullLoading v-if="isFullLoading" />
     <NuxtLayout>
@@ -16,8 +13,8 @@
 
 <script setup lang="ts">
 import themeOverrides from "@/utils/theme";
-import { darkTheme } from "naive-ui";
 
+const theme = ref();
 const nuxtApp = useNuxtApp();
 // 是否首次加载
 const isFullLoading = ref(true);

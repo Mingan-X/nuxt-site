@@ -1,6 +1,6 @@
 ---
 date: 2023-05-05
-showTitle: 用Canvas制作粒子动画
+title: 用Canvas制作粒子动画
 ---
 
 # 前言

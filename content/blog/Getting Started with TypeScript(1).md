@@ -1,6 +1,6 @@
 ---
 date: 2023-01-19
-showTitle: TypeScript入门(1)|青训营笔记
+title: TypeScript入门(1)|青训营笔记
 ---
 
 这是我参与「第五届字节青训营」伴学笔记创作活动的第 4 天。

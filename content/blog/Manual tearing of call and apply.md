@@ -1,6 +1,6 @@
 ---
 date: 2023-04-15
-showTitle: 手撕call和apply
+title: 手撕call和apply
 ---
 
 # 前言

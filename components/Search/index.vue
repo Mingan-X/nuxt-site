@@ -2,7 +2,13 @@
   <n-icon @click="show" class="mr-8px" size="20" color="#94a3b8"
     ><SearchCircleOutline
   /></n-icon>
-  <n-modal v-model:show="showSearchModel" :show-icon="false" preset="dialog">
+  <n-modal
+    v-model:show="showSearchModel"
+    :show-icon="false"
+    preset="dialog"
+    :mask-closable="false"
+    @after-leave="searchValue = ''"
+  >
     <template #header>
       <div>全站搜索</div>
     </template>
@@ -12,7 +18,6 @@
         v-model:value="searchValue"
         placeholder=""
         clearable
-        @update:value="search"
       ></n-input>
       <span
         class="absolute z-99 position-top-[6px] position-left-12px transition-all-500"
@@ -22,15 +27,13 @@
     <div class="search-result">
       <div
         v-for="item in result"
-        class="hover:text-white hover:bg-zinc-800 cursor-pointer py-1 flex items-center"
+        class="hover:bg-zinc-100 .dark:hover:bg-zinc-600 cursor-pointer py-1 flex items-center"
         @click="routeTo(item)"
       >
-        <!-- <Button as="a" variant="link" :href="item.item.id" target="_blank" link :label="item.item.id.split('/')[item.item.id.split('/').length - 1]"></Button> -->
-        <!-- <Button as="a" variant="link" :href="item.item.id" target="_blank" link :label="item.item.title"></Button> -->
         <Button severity="secondary" variant="text" rounded>
           <Icon name="icon-park-outline:read-book"></Icon>
         </Button>
-        <span>{{ item.item.title }}</span>
+        <span class="text-truncate cursor-pointer">{{ item.item.title }}</span>
       </div>
     </div>
   </n-modal>
@@ -49,18 +52,20 @@ const result = ref<any>([]);
 const initSections = async () => {
   const { data, error } = await useAsyncData(
     "search-full-text",
-    () => queryCollectionSearchSections("blog"),
+    () => queryCollectionNavigation("blog", ["description"]),
     { lazy: true }
   );
-  console.log(data);
-
-  fuse.value = new Fuse(data.value as any, {
-    ignoreLocation: true,
-    includeMatches: true,
-    threshold: 0.3,
-    minMatchCharLength: 1,
-    keys: ["title", "description"],
-  });
+  console.log(data.value, "data");
+  if (data.value) {
+    fuse.value = new Fuse(data.value[0]?.children as any, {
+      ignoreLocation: true,
+      includeMatches: true,
+      threshold: 0.3,
+      minMatchCharLength: 1,
+      keys: ["title", "description"],
+    });
+    console.log(fuse.value, "fuse");
+  }
 };
 const search = (value: string) => {
   if (value) {
@@ -77,11 +82,13 @@ const show = () => {
 
 watch(searchValue, () => {
   result.value = fuse.value.search(toValue(searchValue)).slice(0, 10);
-  console.log(result.value);
+  search(searchValue.value);
+  console.log(result.value, "result");
 });
 
 const routeTo = (item: any) => {
-  navigateTo(item.item.id);
+  searchValue.value = "";
+  navigateTo(item.item.path);
   showSearchModel.value = false;
 };
 

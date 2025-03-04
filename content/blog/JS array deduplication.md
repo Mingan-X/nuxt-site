@@ -1,6 +1,6 @@
 ---
 date: 2023-04-14
-showTitle: JS数组去重
+title: JS数组去重
 ---
 
 # 前言

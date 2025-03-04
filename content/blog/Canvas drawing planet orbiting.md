@@ -1,6 +1,6 @@
 ---
 date: 2023-03-20
-showTitle: canvas绘制行星环绕
+title: canvas绘制行星环绕
 ---
 
 <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/099e7c6c83e5400daafa0daf7a297e14~tplv-k3u1fbpfcp-watermark.image?" alt="太阳与月亮.gif" width="100%" />

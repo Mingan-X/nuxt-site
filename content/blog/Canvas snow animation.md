@@ -1,6 +1,6 @@
 ---
 date: 2023-04-27
-showTitle: canvas下雪动画
+title: canvas下雪动画
 ---
 
 # 前言

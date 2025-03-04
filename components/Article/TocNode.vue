@@ -4,7 +4,7 @@
     class="my-6px color-#73828c"
   >
     <span
-      class="cursor-pointer block overflow-hidden text-nowrap text-ellipsis hover:overflow-visible hover:text-wrap"
+      class="cursor-pointer text-truncate hover:overflow-visible hover:text-wrap"
       @click="goAnchor(item.id)"
       >{{ item.text }}</span
     >

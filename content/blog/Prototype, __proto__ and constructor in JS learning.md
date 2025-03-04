@@ -1,6 +1,6 @@
 ---
 date: 2022-12-22
-showTitle: JS学习中prototype、__proto__与constructor
+title: JS学习中prototype、__proto__与constructor
 ---
 
 # 1.前言

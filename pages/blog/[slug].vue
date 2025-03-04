@@ -18,11 +18,11 @@ const { data: post } = await useAsyncData(`article-${useRoute().path}`, () => {
   return queryCollection("blog").path(useRoute().path).first();
 });
 useHead({
-  title: post.value?.showTitle || post.value?.title,
+  title: post.value?.title || post.value?.title,
 });
 
 const { data } = await useAsyncData("navigation", () => {
-  return queryCollectionNavigation("blog");
+  return queryCollectionNavigation("blog", ["title"]);
 });
 
 const { data: data1 } = await useAsyncData("surround", () => {

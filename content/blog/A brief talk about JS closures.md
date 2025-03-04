@@ -1,6 +1,6 @@
 ---
 date: 2023-05-09
-showTitle: 浅谈JS闭包
+title: 浅谈JS闭包
 ---
 
 # 前言

@@ -1,6 +1,6 @@
 ---
 date: 2023-01-17
-showTitle: 跟着月影学JavaScript|青训营笔记
+title: 跟着月影学JavaScript|青训营笔记
 ---
 
 这是我参与「第五届字节青训营」伴学笔记创作活动的第 3 天。

@@ -1,6 +1,6 @@
 ---
 date: 2023-04-18
-showTitle: JS搜索数据展示
+title: JS搜索数据展示
 ---
 
 # 前言

@@ -1,6 +1,6 @@
 ---
 date: 2025-2-24
-showTitle: test
+title: test
 ---
 
 # 中文排版示例

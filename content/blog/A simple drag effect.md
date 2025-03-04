@@ -1,6 +1,6 @@
 ---
 date: 2023-04-25
-showTitle: 如何使用HTML、CSS和JavaScript实现一个简单的拖拽效果？
+title: 如何使用HTML、CSS和JavaScript实现一个简单的拖拽效果？
 ---
 
 # 前言
