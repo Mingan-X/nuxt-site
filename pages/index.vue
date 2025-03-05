@@ -44,12 +44,14 @@ const startAnimation = () => {
     });
   });
 };
-onMounted(() => {
-  // 重绘gif
-  if (source.value) {
-    useRenderGif(source.value); // canvas渲染gif
-    startAnimation();
-  }
+onMounted(async () => {
+  await nextTick(() => {
+    // 重绘gif
+    if (source.value) {
+      useRenderGif(source.value); // canvas渲染gif
+      startAnimation();
+    }
+  });
 });
 </script>
 <style scoped lang="less">
