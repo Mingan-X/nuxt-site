@@ -1,5 +1,9 @@
 <template>
-  <n-config-provider :theme-overrides="themeOverrides" :theme="theme">
+  <n-config-provider
+    v-if="!$colorMode.unknown"
+    :theme-overrides="themeOverrides"
+    :theme="$colorMode.preference === 'dark' ? darkTheme : null"
+  >
     <!-- 首页加载全屏动画 -->
     <FullLoading v-if="isFullLoading" />
     <NuxtLayout>
@@ -23,7 +27,6 @@ nuxtApp.hook("page:start", () => {
   isFullLoading.value = true;
 });
 nuxtApp.hook("page:finish", () => {
-  theme.value = useColorMode().preference === "dark" ? darkTheme : "";
   isFullLoading.value = false;
 });
 </script>

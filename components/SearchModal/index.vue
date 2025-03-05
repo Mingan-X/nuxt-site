@@ -1,7 +1,4 @@
 <template>
-  <n-icon @click="show" class="mr-8px" size="20" color="#94a3b8"
-    ><SearchCircleOutline
-  /></n-icon>
   <n-modal
     v-model:show="showSearchModel"
     :show-icon="false"
@@ -20,7 +17,7 @@
         clearable
       ></n-input>
       <span
-        class="absolute z-99 position-top-[6px] position-left-12px transition-all-500"
+        class="absolute z-99 pointer-events-none position-top-[6px] position-left-12px transition-all-500"
         >文章标题或简介</span
       >
     </div>
@@ -91,6 +88,8 @@ const routeTo = (item: any) => {
   navigateTo(item.item.path);
   showSearchModel.value = false;
 };
+
+defineExpose({ show });
 
 onUnmounted(() => {
   fuse.value = null;

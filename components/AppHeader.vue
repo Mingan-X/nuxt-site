@@ -13,8 +13,11 @@
       <n-dropdown trigger="click" :options="menuOptions">
         <n-icon class="md:hidden! mr-8px" :size="26"><Menu /></n-icon>
       </n-dropdown>
-      <Search />
+      <n-icon @click="showSearchModal" class="mr-8px" size="20" color="#94a3b8"
+        ><SearchCircleOutline
+      /></n-icon>
       <ColorMode />
+      <SearchModal ref="searchModal" />
     </div>
   </div>
   <!-- 移动端 -->
@@ -30,9 +33,11 @@ import {
   LibraryOutline,
   GridOutline,
   Menu,
+  SearchCircleOutline,
 } from "@vicons/ionicons5";
 import { RouterLink } from "vue-router";
 
+const searchModal = ref();
 const activeKey = ref(null);
 function renderIcon(icon: Component) {
   return () =>
@@ -116,6 +121,9 @@ const menuOptions: MenuOption[] = [
     icon: renderIcon(PersonOutline),
   },
 ];
+const showSearchModal = () => {
+  searchModal.value?.show();
+};
 </script>
 
 <style scoped lang="less">
