@@ -4,14 +4,16 @@
     :theme-overrides="themeOverrides"
     :theme="$colorMode.preference === 'dark' ? darkTheme : null"
   >
-    <!-- 首页加载全屏动画 -->
-    <FullLoading v-if="isFullLoading" />
-    <NuxtLayout>
-      <!-- 在页面导航之间显示一个进度条 -->
-      <NuxtLoadingIndicator />
-      <NuxtPage />
-    </NuxtLayout>
-    <ParticlesBg />
+    <n-message-provider>
+      <!-- 首页加载全屏动画 -->
+      <FullLoading v-if="isFullLoading" />
+      <NuxtLayout>
+        <!-- 在页面导航之间显示一个进度条 -->
+        <NuxtLoadingIndicator />
+        <NuxtPage />
+      </NuxtLayout>
+      <ParticlesBg />
+    </n-message-provider>
   </n-config-provider>
 </template>
 

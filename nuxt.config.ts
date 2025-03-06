@@ -5,6 +5,13 @@ import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
+  runtimeConfig: {
+    public: {
+      gitlabToken: process.env.GITLAB_TOKEN,
+      projectId: process.env.GITLAB_PROJECT_ID,
+      branch: process.env.GITLAB_BRANCH,
+    },
+  },
   devtools: { enabled: true },
   build: {
     analyze: true, // 启用构建分析，帮助找出可能的错误
