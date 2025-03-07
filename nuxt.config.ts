@@ -40,6 +40,7 @@ export default defineNuxtConfig({
     "nuxt-particles",
     "@nuxtjs/color-mode",
     "@nuxt/content",
+    "@vueuse/nuxt",
   ],
   // nuxt/content 配置
   content: {

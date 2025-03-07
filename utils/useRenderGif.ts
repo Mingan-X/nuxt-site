@@ -85,7 +85,7 @@ export default function (dom: HTMLImageElement) {
       // 将GIF绘制在canvas上
       // @ts-ignore
       imageDecoder = new ImageDecoder({
-        data: response.body,
+        data: response.body as any,
         type: "image/gif",
       });
       // 解析第一帧并绘制
