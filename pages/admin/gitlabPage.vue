@@ -7,8 +7,7 @@
         @upload-error="handleUploadError"
       />
     </n-card>
-
-    <n-card title="文件列表">
+    <n-card>
       <file-list :files="files" @delete="handleDeleteFile" />
     </n-card>
   </n-space>
@@ -19,7 +18,7 @@ import { ref, onMounted } from "vue";
 import { useMessage } from "naive-ui";
 const message = useMessage();
 const files = ref([]);
-const { loadFiles, deleteFile } = useGitlabFiles();
+const { loadFiles, deleteFiles } = useGitlabFiles();
 
 onMounted(async () => {
   await refreshFileList();
@@ -57,7 +56,7 @@ const handleUploadError = (error) => {
 
 const handleDeleteFile = async (path) => {
   try {
-    await deleteFile(path);
+    await deleteFiles(path);
     await refreshFileList();
     message.success("文件删除成功");
   } catch (error) {

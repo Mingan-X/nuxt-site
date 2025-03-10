@@ -1,93 +1,114 @@
 <!-- FileListComponent.vue -->
 <template>
-  <n-list bordered hoverable>
-    <n-list-item v-for="file in files" :key="file.id">
-      <div class="file-item">
-        <n-space align="center" :size="16">
-          <n-icon :component="getFileIcon(file.name)" size="20" />
-          <n-ellipsis style="max-width: 150px">
-            {{ file.name }}
-            <template #tooltip>
-              <n-text depth="3">文件名: {{ file.name }}</n-text>
-            </template>
-          </n-ellipsis>
-          <n-tag size="small" :bordered="false" type="info">
-            {{ formatFileType(file.name) }}
-          </n-tag>
-        </n-space>
-        <n-space :size="8">
-          <n-button
-            text
-            tag="a"
-            :href="file.url"
-            target="_blank"
-            type="primary"
-            :focusable="false"
-          >
-            <template #icon>
-              <n-icon><EyeOutline /></n-icon>
-            </template>
-            查看
-          </n-button>
-          <n-button
-            text
-            type="primary"
-            :focusable="false"
-            @click="copyToClipboard(file.url)"
-          >
-            <template #icon>
-              <n-icon><CopyOutline /></n-icon>
-            </template>
-            复制链接
-          </n-button>
-          <n-popconfirm
-            @positive-click="handleDelete(file.path)"
-            positive-text="确认"
-            negative-text="取消"
-          >
-            <template #trigger>
-              <n-button text type="error" :focusable="false">
-                <template #icon>
-                  <n-icon><TrashOutline /></n-icon>
-                </template>
-                删除
-              </n-button>
-            </template>
-            确定要永久删除该文件吗？
-          </n-popconfirm>
-        </n-space>
-      </div>
-    </n-list-item>
-  </n-list>
-  <div>
-    <n-image-group>
-      <n-space>
-        <div
-          class="relative w-100px h-100px"
-          v-for="(item, index) in files.filter((file) =>
-            imgTypeList.includes(file.name.split('.').pop())
+  <div id="file-list" class="w-full h-full flex gap-20px">
+    <div id="file-group">
+      <div class="pb-24px text-18px">文档列表</div>
+      <n-list bordered hoverable>
+        <n-list-item
+          v-for="(file, index) in files.filter(
+            (file) => !imgTypeList.includes(file.name.split('.').pop())
           )"
-          :key="index"
+          :key="file.id"
         >
-          <n-image
-            class="w-full h-full"
-            width="100"
-            height="100"
-            :src="item.url"
-          />
-          <div
-            class="absolute top-0 right-0 bottom-0 left-0 w-full h-full bg-#151718b3 flex justify-center items-center gap-4"
-          >
-            <n-button text :focusable="false">
-              <n-icon><CopyOutline /></n-icon>
-            </n-button>
-            <n-button text :focusable="false">
-              <n-icon><TrashOutline /></n-icon>
-            </n-button>
+          <div class="file-item">
+            <n-space align="center" :size="16">
+              <n-icon :component="getFileIcon(file.name)" size="20" />
+              <n-ellipsis style="max-width: 150px">
+                {{ file.name }}
+                <template #tooltip>
+                  <n-text depth="3">文件名: {{ file.name }}</n-text>
+                </template>
+              </n-ellipsis>
+              <n-tag size="small" :bordered="false" type="info">
+                {{ formatFileType(file.name) }}
+              </n-tag>
+            </n-space>
+            <n-space :size="8">
+              <n-button
+                text
+                tag="a"
+                :href="file.url"
+                target="_blank"
+                type="primary"
+                :focusable="false"
+              >
+                <template #icon>
+                  <n-icon><EyeOutline /></n-icon>
+                </template>
+                查看
+              </n-button>
+              <n-button
+                text
+                type="primary"
+                :focusable="false"
+                @click="copyToClipboard(file.url)"
+              >
+                <template #icon>
+                  <n-icon><CopyOutline /></n-icon>
+                </template>
+                复制链接
+              </n-button>
+              <n-popconfirm
+                @positive-click="handleDelete(file.path)"
+                positive-text="确认"
+                negative-text="取消"
+              >
+                <template #trigger>
+                  <n-button text type="error" :focusable="false">
+                    <template #icon>
+                      <n-icon><TrashOutline /></n-icon>
+                    </template>
+                    删除
+                  </n-button>
+                </template>
+                确定要永久删除该文件吗？
+              </n-popconfirm>
+            </n-space>
           </div>
-        </div>
-      </n-space>
-    </n-image-group>
+        </n-list-item>
+      </n-list>
+    </div>
+    <div id="img-group">
+      <div class="pb-24px text-18px">图片列表</div>
+      <n-image-group>
+        <n-space :size="8">
+          <div
+            class="relative w-100px h-100px border-1px border-[var(--border-color)]"
+            v-for="(item, index) in files.filter((file) =>
+              imgTypeList.includes(file.name.split('.').pop())
+            )"
+            :key="index"
+          >
+            <n-image
+              class="w-full h-full"
+              width="100"
+              height="100"
+              :src="item.url"
+            />
+            <div
+              class="absolute top-0 right-0 bg-#151718b3 flex justify-center items-center gap-1"
+            >
+              <n-button
+                @click="copyToClipboard(item.url)"
+                class="text-#fff"
+                text
+                :focusable="false"
+              >
+                <n-icon><CopyOutline /></n-icon>
+              </n-button>
+              <n-button
+                @click="handleDelete(item.path)"
+                class="text-#fff"
+                text
+                :focusable="false"
+              >
+                <n-icon><TrashOutline /></n-icon>
+              </n-button>
+            </div>
+          </div>
+        </n-space>
+      </n-image-group>
+    </div>
   </div>
 </template>
 
