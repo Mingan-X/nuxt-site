@@ -1,23 +1,29 @@
 <template>
   <!-- PC端 -->
-  <div class="flex items-center py-4 md:px-12 max-md:px-4">
-    <Logo @click="$router.push('/')" class="cursor-pointer" />
-    <n-menu
-      router
-      class="max-md:hidden! mx-auto w-fit! text-16px"
-      v-model:value="activeKey"
-      mode="horizontal"
-      :options="menuOptions"
-    />
-    <div class="max-md:flex-1 flex items-center justify-end">
-      <n-dropdown trigger="click" :options="menuOptions">
-        <n-icon class="md:hidden! mr-8px" :size="26"><Menu /></n-icon>
-      </n-dropdown>
-      <n-icon @click="showSearchModal" class="mr-8px" size="20" color="#94a3b8"
-        ><SearchCircleOutline
-      /></n-icon>
-      <ColorMode />
-      <SearchModal ref="searchModal" />
+  <div class="fixed top-0 w-full z-999 backdrop-blur-10px">
+    <div class="flex items-center py-4 md:px-12 max-md:px-4">
+      <Logo @click="$router.push('/')" class="cursor-pointer" />
+      <n-menu
+        router
+        class="max-md:hidden! mx-auto w-fit! text-16px"
+        v-model:value="activeKey"
+        mode="horizontal"
+        :options="menuOptions"
+      />
+      <div class="max-md:flex-1 flex items-center justify-end">
+        <n-dropdown trigger="click" :options="menuOptions">
+          <n-icon class="md:hidden! mr-8px" :size="26"><Menu /></n-icon>
+        </n-dropdown>
+        <n-icon
+          @click="showSearchModal"
+          class="mr-8px"
+          size="20"
+          color="#94a3b8"
+          ><SearchCircleOutline
+        /></n-icon>
+        <ColorMode />
+        <SearchModal ref="searchModal" />
+      </div>
     </div>
   </div>
   <!-- 移动端 -->
