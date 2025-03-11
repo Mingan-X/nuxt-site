@@ -41,7 +41,9 @@ import {
   Menu,
   SearchCircleOutline,
 } from "@vicons/ionicons5";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
+
+console.log(useRouter().getRoutes());
 
 const searchModal = ref();
 const activeKey = ref(null);
@@ -118,12 +120,12 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            name: "about",
+            name: "admin",
           },
         },
-        { default: () => "About" }
+        { default: () => "Admin" }
       ),
-    key: "About",
+    key: "Admin",
     icon: renderIcon(PersonOutline),
   },
 ];

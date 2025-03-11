@@ -39,5 +39,18 @@ export const useGitlabFiles = () => {
     );
   };
 
-  return { uploadFile, deleteFiles, loadFiles };
+  const getFileContent = (path: any) => {
+    return useRequest.get(
+      `/projects/${
+        config.public.projectId
+      }/repository/files/${encodeURIComponent(path)}`,
+      {
+        ref: config.public.branch,
+      },
+      {},
+      true
+    );
+  };
+
+  return { uploadFile, deleteFiles, loadFiles, getFileContent };
 };

@@ -1,19 +1,26 @@
 <!-- GitlabPage.vue -->
 <template>
-  <n-space vertical :size="24">
-    <n-card title="文件上传">
-      <upload
-        @upload-success="handleUploadSuccess"
-        @upload-error="handleUploadError"
-      />
-    </n-card>
-    <n-card title="文件列表" v-if="filesList.length > 0">
-      <file-list :files="filesList" @delete="handleDeleteFile" />
-    </n-card>
-    <n-card title="图片列表" v-if="imgsList.length > 0">
-      <img-list :files="imgsList" @delete="handleDeleteFile" />
-    </n-card>
-  </n-space>
+  <div>
+    <n-space v-if="!showMdEditor" vertical :size="24">
+      <n-card title="文件上传">
+        <upload
+          @upload-success="handleUploadSuccess"
+          @upload-error="handleUploadError"
+        />
+      </n-card>
+      <n-card title="文件列表" v-if="filesList.length > 0">
+        <file-list
+          :files="filesList"
+          @delete="handleDeleteFile"
+          @edit="handleEditFile"
+        />
+      </n-card>
+      <n-card title="图片列表" v-if="imgsList.length > 0">
+        <img-list :files="imgsList" @delete="handleDeleteFile" />
+      </n-card>
+    </n-space>
+    <md-editor v-if="showMdEditor" :path="editPath" />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -25,9 +32,18 @@ const filesList = ref<any>([]);
 const imgsList = ref<any>([]);
 const { loadFiles, deleteFiles } = useGitlabFiles();
 const imgTypeList = ["png", "jpg", "jpeg", "bmp", "gif", "webp"];
+const showMdEditor = ref(false);
+const editPath = ref("");
 onMounted(async () => {
   await refreshFileList();
 });
+
+const handleEditFile = (path: string) => {
+  console.log(path, "path");
+
+  editPath.value = path;
+  showMdEditor.value = true;
+};
 
 const refreshFileList = async () => {
   try {

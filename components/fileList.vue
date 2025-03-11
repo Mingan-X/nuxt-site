@@ -30,6 +30,17 @@
             查看
           </n-button>
           <n-button
+            @click="handleEdit(file.path)"
+            text
+            type="primary"
+            :focusable="false"
+          >
+            <template #icon>
+              <n-icon><CreateOutline /></n-icon>
+            </template>
+            编辑
+          </n-button>
+          <n-button
             text
             type="primary"
             :focusable="false"
@@ -63,6 +74,7 @@
 
 <script setup lang="ts">
 import {
+  CreateOutline,
   EyeOutline,
   TrashOutline,
   DocumentTextOutline,
@@ -89,7 +101,7 @@ const copyToClipboard = async (url: string) => {
   }
 };
 
-const emit = defineEmits(["delete"]);
+const emit = defineEmits(["delete", "edit"]);
 
 // 文件类型图标映射（网页1提到Naive UI支持丰富的图标方案）
 const getFileIcon = (fileName: string) => {
@@ -108,6 +120,10 @@ const formatFileType = (fileName: string) => {
 
 const handleDelete = (path: string) => {
   emit("delete", path);
+};
+
+const handleEdit = (path: string) => {
+  emit("edit", path);
 };
 </script>
 

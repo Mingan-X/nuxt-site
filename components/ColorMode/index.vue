@@ -1,7 +1,7 @@
 <template>
   <n-tooltip trigger="hover">
     <template #trigger>
-      <n-button class="bg-[var(--bg-color)]" circle text @click="toggleDark">
+      <n-button circle text @click="toggleDark">
         <n-icon
           size="20"
           color="#94a3b8"
