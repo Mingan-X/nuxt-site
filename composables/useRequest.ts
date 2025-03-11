@@ -33,11 +33,7 @@ const request = async (
           return;
         }
         const value = data.value as any;
-        if (!value) {
-          console.log("接口异常");
-        } else {
-          resolve(value);
-        }
+        resolve(value);
       })
       .catch((err) => {
         console.log(err, "err");
