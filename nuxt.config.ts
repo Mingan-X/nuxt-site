@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    baseURL: "/nuxt-github-pages/",
+    baseURL: "/nuxt-site/",
     pageTransition: { name: "page", mode: "out-in" },
     head: {
       charset: "utf-8",
