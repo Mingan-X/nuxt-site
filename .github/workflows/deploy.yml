@@ -32,16 +32,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20" # 使用适合的 Node.js 版本
+          node-version: "latest" # 使用适合的 Node.js 版本
 
-      - name: Enable pnpm
+      - name: Enable npm
         run: corepack enable
 
       - name: Install Dependencies
-        run: pnpm install # 或 yarn install，根据你的偏好选择
+        run: npm install # 或 yarn install，根据你的偏好选择
 
       - name: Generate Static Site
-        run: pnpm generate # 或者其他生成静态站点的命令，具体取决于你的 Nuxt.js 配置 # 或 pnpm docs:build / yarn docs:build / bun run docs:build
+        run: npm run generate # 或者其他生成静态站点的命令，具体取决于你的 Nuxt.js 配置 # 或 pnpm docs:build / yarn docs:build / bun run docs:build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
