@@ -11,13 +11,13 @@
           class="w-full h-full"
           width="100"
           height="100"
-          :src="item.url"
+          :src="item.download_url"
         />
         <div
           class="absolute top-0 right-0 bg-#151718b3 flex justify-center items-center gap-1"
         >
           <n-button
-            @click="copyToClipboard(item.url)"
+            @click="copyToClipboard(item.download_url)"
             class="text-#fff"
             text
             :focusable="false"
@@ -25,7 +25,7 @@
             <n-icon><CopyOutline /></n-icon>
           </n-button>
           <n-button
-            @click="handleDelete(item.path)"
+            @click="handleDelete(item)"
             class="text-#fff"
             text
             :focusable="false"
@@ -83,8 +83,8 @@ const formatFileType = (fileName: string) => {
   }
 };
 
-const handleDelete = (path: string) => {
-  emit("delete", path);
+const handleDelete = (deleteInfo: any) => {
+  emit("delete", deleteInfo);
 };
 </script>
 

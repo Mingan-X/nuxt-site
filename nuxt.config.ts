@@ -7,9 +7,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   runtimeConfig: {
     public: {
-      gitlabToken: process.env.GITLAB_TOKEN,
-      projectId: process.env.GITLAB_PROJECT_ID,
-      branch: process.env.GITLAB_BRANCH,
+      BASE_URL: process.env.BASE_URL,
     },
   },
   devtools: { enabled: true },

@@ -17,7 +17,7 @@ const props = defineProps({
 const initMDContent = async () => {
   const res: any = await getFileContent(props.path);
   const decodeContent = new TextDecoder().decode(
-    Uint8Array.from(atob(res.content), (c) => c.charCodeAt(0))
+    Uint8Array.from(atob(res.data.content), (c) => c.charCodeAt(0))
   );
   text.value = decodeContent;
 };

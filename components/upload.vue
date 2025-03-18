@@ -1,9 +1,10 @@
 <!-- UploadComponent.vue -->
 <template>
   <n-upload
-    accept="image/*,.pdf,.doc,.docx,.md"
+    accept="image/*,.md"
     :custom-request="customRequest"
     :disabled="isUploading"
+    id="uploadRef"
   >
     <n-upload-dragger>
       <div class="dnd-container">
@@ -25,17 +26,29 @@
 import { ref } from "vue";
 import { NUpload, NUploadDragger, NIcon, NText, NP } from "naive-ui";
 import { CloudUploadOutline } from "@vicons/ionicons5";
-const { uploadFile } = useGitlabFiles();
+const { uploadImgFile, uploadDocFile } = useGitlabFiles();
 const emit = defineEmits(["upload-success", "upload-error"]);
-const allowedTypes = ["image/*", ".pdf", ".doc", ".docx", ".md"];
+const allowedTypes = ["image/*", ".md"];
 const isUploading = ref(false);
 const customRequest = async ({ file, onProgress, onFinish }) => {
   try {
-    const base64Content = await readFileAsBase64(file.file);
-    const response = await uploadFile({
-      name: file.name,
-      content: base64Content,
-    });
+    let response;
+    if (file.name.split(".").pop() === "md") {
+      const formData = new FormData();
+      // const base64Content = await readFileAsBase64(file.file);
+      const newFile = new File([file.file], file.name, {
+        type: "text/markdown",
+      });
+      formData.append("name", newFile.name);
+      formData.append("file", newFile);
+      response = await uploadDocFile(formData);
+    } else {
+      const formData = new FormData();
+      // const base64Content = await readFileAsBase64(file.file);
+      formData.append("name", file.name);
+      formData.append("file", file.file);
+      response = await uploadImgFile(formData);
+    }
     onFinish();
     emit("upload-success", response);
   } catch (error) {
@@ -43,14 +56,15 @@ const customRequest = async ({ file, onProgress, onFinish }) => {
   }
 };
 
-const readFileAsBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result.split(",")[1]);
-    reader.onerror = reject;
-  });
-};
+/** Read file as base64 */
+// const readFileAsBase64 = (file) => {
+//   return new Promise((resolve, reject) => {
+//     const reader = new FileReader();
+//     reader.readAsDataURL(file);
+//     reader.onload = () => resolve(reader.result.split(",")[1]);
+//     reader.onerror = reject;
+//   });
+// };
 </script>
 
 <style scoped>

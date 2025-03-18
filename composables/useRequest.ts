@@ -1,18 +1,10 @@
-const request = async (
-  url: string,
-  options: any,
-  headers: object,
-  checkGitlabToken: boolean = false
-) => {
+const request = async (url: string, options: any, headers: object) => {
   const config = useRuntimeConfig();
-  const reqUrl = "https://gitlab.com/api/v4" + url;
+  const reqUrl = config.public.BASE_URL + url;
   const customHeaders: any = Object.assign(
     { "Content-Type": "application/json" },
     headers
   );
-  if (checkGitlabToken) {
-    customHeaders["PRIVATE-TOKEN"] = config.public.gitlabToken;
-  }
   // 处理 application/x-www-form-urlencoded 类型的请求体
   if (
     customHeaders["Content-Type"].includes("application/x-www-form-urlencoded")
@@ -43,43 +35,25 @@ const request = async (
 };
 
 export const useRequest = {
-  get: (
-    url: string = "",
-    params: object = {},
-    headers: object = {},
-    checkGitlabToken: boolean = false
-  ) => {
+  get: (url: string = "", params: object = {}, headers: object = {}) => {
     return request(
       url,
       { method: "GET", params, key: `${url}${JSON.stringify(params)}` },
-      headers,
-      checkGitlabToken
+      headers
     );
   },
-  delete: (
-    url: string = "",
-    params: object = {},
-    headers: object = {},
-    checkGitlabToken: boolean = false
-  ) => {
+  delete: (url: string = "", params: object = {}, headers: object = {}) => {
     return request(
       url,
       { method: "DELETE", params, key: `${url}${JSON.stringify(params)}` },
-      headers,
-      checkGitlabToken
+      headers
     );
   },
-  post: (
-    url: string = "",
-    body: object = {},
-    headers: object = {},
-    checkGitlabToken: boolean = false
-  ) => {
+  post: (url: string = "", body: object = {}, headers: object = {}) => {
     return request(
       url,
       { method: "POST", body, key: `${url}${JSON.stringify(body)}` },
-      headers,
-      checkGitlabToken
+      headers
     );
   },
 };

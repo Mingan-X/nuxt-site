@@ -19,7 +19,7 @@
           <n-button
             text
             tag="a"
-            :href="file.url"
+            :href="file.download_url"
             target="_blank"
             type="primary"
             :focusable="false"
@@ -44,7 +44,7 @@
             text
             type="primary"
             :focusable="false"
-            @click="copyToClipboard(file.url)"
+            @click="copyToClipboard(file.download_url)"
           >
             <template #icon>
               <n-icon><CopyOutline /></n-icon>
@@ -52,7 +52,7 @@
             复制链接
           </n-button>
           <n-popconfirm
-            @positive-click="handleDelete(file.path)"
+            @positive-click="handleDelete(file)"
             positive-text="确认"
             negative-text="取消"
           >
@@ -118,8 +118,8 @@ const formatFileType = (fileName: string) => {
   }
 };
 
-const handleDelete = (path: string) => {
-  emit("delete", path);
+const handleDelete = (deleteInfo: any) => {
+  emit("delete", deleteInfo);
 };
 
 const handleEdit = (path: string) => {
