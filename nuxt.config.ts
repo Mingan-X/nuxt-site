@@ -13,6 +13,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   build: {
     analyze: true, // 启用构建分析，帮助找出可能的错误
+    transpile: ["vueuc"],
   },
   nitro: {
     prerender: {
