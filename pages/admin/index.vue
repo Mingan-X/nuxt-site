@@ -9,17 +9,12 @@
         />
       </n-card>
       <n-card title="文件列表" v-if="filesList.length > 0">
-        <file-list
-          :files="filesList"
-          @delete="handleDeleteFile"
-          @edit="handleEditFile"
-        />
+        <file-list :files="filesList" @delete="handleDeleteFile" />
       </n-card>
       <n-card title="图片列表" v-if="imgsList.length > 0">
         <img-list :files="imgsList" @delete="handleDeleteFile" />
       </n-card>
     </n-space>
-    <md-editor v-if="showMdEditor" :path="editPath" />
   </div>
 </template>
 
@@ -31,15 +26,9 @@ const filesList = ref<any>([]);
 const imgsList = ref<any>([]);
 const { loadImgFiles, deleteFiles, loadDocFiles } = useGitlabFiles();
 const showMdEditor = ref(false);
-const editPath = ref("");
 onMounted(async () => {
   await refreshFileList();
 });
-
-const handleEditFile = (path: string) => {
-  editPath.value = path;
-  showMdEditor.value = true;
-};
 
 const refreshFileList = async () => {
   try {
