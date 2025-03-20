@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      crawlLinks: false, // 禁用爬虫抓取，可以逐一定位问题
+      // crawlLinks: false, // 禁用爬虫抓取，可以逐一定位问题
     },
   },
   app: {
