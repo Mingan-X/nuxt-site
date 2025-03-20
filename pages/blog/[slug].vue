@@ -1,5 +1,5 @@
 <template>
-  <div id="article_page" class="flex">
+  <div id="article_page" class="flex flex-col">
     <ArticleToc
       class="hidden fixed position-right-7xl position-top-[6rem] lg:block w-220px h-[calc(100%-6rem)] overflow-y-auto"
       :toc="toc"
@@ -10,6 +10,25 @@
       :value="post"
       class="prose md md:max-w-65ch!"
     />
+    <div v-if="surround" class="w-full grid grid-cols-4 gap-4 md:max-w-80ch!">
+      <n-card
+        @click="$router.push(surround[0]?.path)"
+        hoverable
+        class="col-span-2 rounded-8px cursor-pointer"
+        v-if="surround[0]"
+        title="上一篇"
+      >
+        <p class="w-full text-truncate">{{ surround[0]?.title }}</p>
+      </n-card>
+      <n-card
+        @click="$router.push(surround[1]?.path)"
+        hoverable
+        class="text-right col-span-2 col-start-3 rounded-8px cursor-pointer"
+        v-if="surround[1]"
+        title="下一篇"
+        ><p class="w-full text-truncate">{{ surround[1]?.title }}</p></n-card
+      >
+    </div>
   </div>
 </template>
 
@@ -29,13 +48,23 @@ const { data } = await useAsyncData("navigation", () => {
   return queryCollectionNavigation("blog", ["title"]);
 });
 
-const { data: data1 } = await useAsyncData("surround", () => {
-  return queryCollectionItemSurroundings("blog", "/blog/test");
+const { data: surround } = await useAsyncData("surround", () => {
+  return queryCollectionItemSurroundings("blog", useRoute().path);
 });
 
+console.log(surround, "surround");
+
 console.log(data, "queryCollectionNavigation");
-console.log(data1, "queryCollectionItemSurroundings");
 console.log(post, "queryCollection");
 // @ts-ignore
 const toc = buildFullToc(post.value?.body.value) || [];
 </script>
+<style lang="less" scoped>
+:deep(.n-card) > .n-card-header {
+  font-size: inherit;
+  padding: 10px 24px 0 24px;
+}
+:deep(.n-card) > .n-card__content {
+  padding: 0 24px 10px 24px;
+}
+</style>
