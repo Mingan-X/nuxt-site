@@ -51,11 +51,6 @@ const { data } = await useAsyncData("navigation", () => {
 const { data: surround } = await useAsyncData("surround", () => {
   return queryCollectionItemSurroundings("blog", useRoute().path);
 });
-
-console.log(surround, "surround");
-
-console.log(data, "queryCollectionNavigation");
-console.log(post, "queryCollection");
 // @ts-ignore
 const toc = buildFullToc(post.value?.body.value) || [];
 </script>

@@ -1,5 +1,6 @@
 <template>
   <n-config-provider
+    class="h-full"
     v-if="!$colorMode.unknown"
     :theme-overrides="themeOverrides"
     :theme="$colorMode.preference === 'dark' ? darkTheme : null"
