@@ -14,6 +14,7 @@
         <NuxtPage />
       </NuxtLayout>
       <ParticlesBg />
+      <n-back-top :right="30" />
     </n-message-provider>
   </n-config-provider>
 </template>
