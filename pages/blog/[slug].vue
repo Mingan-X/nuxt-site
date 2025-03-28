@@ -8,9 +8,12 @@
     <ContentRenderer
       v-if="post"
       :value="post"
-      class="prose md md:max-w-65ch!"
+      class="prose md md:max-w-65ch! mx-auto"
     />
-    <div v-if="surround" class="w-full grid grid-cols-4 gap-4 md:max-w-80ch!">
+    <div
+      v-if="surround"
+      class="w-full px-4px grid grid-cols-4 gap-4 md:max-w-80ch!"
+    >
       <n-card
         @click="$router.push(surround[0]?.path)"
         hoverable
