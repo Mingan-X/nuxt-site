@@ -87,7 +87,6 @@ export default defineNuxtConfig({
     "@unocss/reset/tailwind-compat.css",
     "~/assets/css/base.less",
     "~/assets/css/themes.less",
-    "~/assets/css/mdc.less",
     "~/assets/css/md.less",
   ],
   vite: {
