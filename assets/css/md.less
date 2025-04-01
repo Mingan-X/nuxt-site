@@ -131,16 +131,6 @@
     white-space: pre;
     margin: 1em 0px;
   }
-  pre:before {
-    content: "";
-    display: block;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NCIgaGVpZ2h0PSIxNCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxIDEpIiBzdHJva2Utd2lkdGg9Ii41Ij48Y2lyY2xlIGN4PSI2IiBjeT0iNiIgcj0iNiIgZmlsbD0iI0ZGNUY1NiIgc3Ryb2tlPSIjRTA0NDNFIi8+PGNpcmNsZSBjeD0iMjYiIGN5PSI2IiByPSI2IiBmaWxsPSIjRkZCRDJFIiBzdHJva2U9IiNERUExMjMiLz48Y2lyY2xlIGN4PSI0NiIgY3k9IjYiIHI9IjYiIGZpbGw9IiMyN0M5M0YiIHN0cm9rZT0iIzFBQUIyOSIvPjwvZz48L3N2Zz4=);
-    height: 30px;
-    width: 100%;
-    margin-bottom: -7px;
-    background-size: 40px;
-    background-repeat: no-repeat;
-  }
   pre,
   pre code[class*="language-"] {
     display: block;
@@ -156,9 +146,7 @@
   code[class*="language-"],
   pre[class*="language-"],
   pre:not(.language-text) {
-    color: #f8f8f2;
     background: none;
-    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
     font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
     font-size: 1em;
     text-align: left;
@@ -177,9 +165,9 @@
   }
   pre[class*="language-"] {
     padding: 1em;
-    margin: 0.5em 0;
+    margin: 0;
     overflow: auto;
-    border-radius: 6px;
+    border-radius: 0 0 6px 6px;
   }
   :not(pre) > code[class*="language-js"],
   pre[class*="language-"] {
