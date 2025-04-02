@@ -5,11 +5,7 @@
       :toc="toc"
     />
     <!-- Render the blog post as Prose & Vue components -->
-    <ContentRenderer
-      v-if="post"
-      :value="post"
-      class="prose md md:max-w-65ch! mx-auto"
-    />
+    <ContentRenderer v-if="post" :value="post" class="prose md mx-auto" />
     <div
       v-if="surround"
       class="w-full px-4px grid grid-cols-4 gap-4 md:max-w-80ch!"

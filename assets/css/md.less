@@ -8,8 +8,8 @@
 }
 // markdown 样式
 .md {
-  min-width: 320px;
-  max-width: 90vw !important;
+  width: 90vw;
+  max-width: 65ch !important;
   word-break: break-all;
   line-height: 1.8em;
   font-size: 16px;
@@ -166,6 +166,7 @@
   pre[class*="language-"] {
     padding: 1em;
     margin: 0;
+    margin-bottom: 1em;
     overflow: auto;
     border-radius: 0 0 6px 6px;
   }
@@ -196,5 +197,43 @@
     overflow: hidden;
     border-style: inset;
     border-width: 1px;
+  }
+  table {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 0;
+    thead {
+      background-color: var(--md-pre-bg-color);
+      tr:first-child > th:first-child {
+        border-top-left-radius: 6px;
+      }
+      tr:first-child > th:last-child {
+        border-top-right-radius: 6px;
+      }
+      tr:last-child > td:first-child {
+        border-bottom-left-radius: 6px;
+      }
+      tr:last-child > td:last-child {
+        border-bottom-right-radius: 6px;
+      }
+      tr > th {
+        text-align: left;
+      }
+    }
+    tbody {
+      tr:first-child > th:first-child {
+        border-top-left-radius: 6px;
+      }
+      tr:first-child > th:last-child {
+        border-top-right-radius: 6px;
+      }
+      tr:last-child > td:first-child {
+        border-bottom-left-radius: 6px;
+      }
+      tr:last-child > td:last-child {
+        border-bottom-right-radius: 6px;
+      }
+    }
   }
 }
