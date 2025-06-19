@@ -1,1 +1,0 @@
-import{u as t}from"./CsczEHLE.js";import{d as o,o as a,c as s,a as n}from"./CbkNwSkz.js";const m=o({__name:"about",setup(r){return t({title:"about - Jasper"}),(u,e)=>(a(),s("section",null,e[0]||(e[0]=[n("p",null,"此页面将显示在 /about 路由。",-1)])))}});export{m as default};
