@@ -90,6 +90,9 @@ export default defineNuxtConfig({
     "~/assets/css/md.less",
   ],
   vite: {
+    ssr: {
+      noExternal: ["naive-ui"], // 解决报错(https://github.com/tusen-ai/naive-ui/issues/6865)
+    },
     plugins: [
       AutoImport({
         imports: [
