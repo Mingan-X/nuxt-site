@@ -4,6 +4,7 @@
     accept="image/*,.md"
     :custom-request="customRequest"
     :disabled="isUploading"
+    multiple
     id="uploadRef"
   >
     <n-upload-dragger>
