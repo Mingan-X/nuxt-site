@@ -135,7 +135,7 @@ function findImgDom(dom?: HTMLElement | ChildNode): HTMLElement {
 function getContentDom() {
   const articleDom: any = curMdContentRef.value;
   // 默认内部会套一层div
-  const contentDom = articleDom && articleDom.childNodes[0];
+  const contentDom = articleDom && articleDom.childNodes[1];
   return contentDom;
 }
 function getOneDomCssStyle(childDom: any, pointCssAttrs: string[] = []) {
@@ -239,8 +239,11 @@ function getOneDomCssStyle(childDom: any, pointCssAttrs: string[] = []) {
 async function getInnerHTML() {
   // 获取内容区域的父级div
   const contentDom = getContentDom();
-  const contentChildrens = contentDom.childNodes;
+  let contentChildrens = contentDom.childNodes;
   let articleOutHTML = `<section style="padding-left:12px; padding-right:12px;background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%);background-size: 20px 20px;">`;
+  contentChildrens = Array.from(contentChildrens).filter(
+    (item: any) => item.id !== "custom-pose-pre"
+  );
   contentChildrens.forEach((childDom: any) => {
     const childInnerHTMLWithInlineStyle = getOneDomCssStyle(childDom);
     articleOutHTML += childInnerHTMLWithInlineStyle;
