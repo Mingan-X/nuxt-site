@@ -6,7 +6,8 @@
       <span class="text-40px font-bold">Hi，I am Jasper</span>
       <span class="text-20px">web developer</span>
       <span class="text-center"
-        >「现实是此岸，理想是彼岸，中间隔着湍急的河流，行动则是架在河上的桥梁」</span
+        >「现实是此岸，理想是彼岸，中间隔着湍急的河流，行动则是架在河上的桥梁」
+        test</span
       >
     </div>
     <div class="flex flex-col items-center justify-center flex-1 min-w-200px">
