@@ -9,7 +9,7 @@ title: 微信小程序-音乐播放器
 
 ## 效果图
 
-<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/85621a02c23b4749acd5df3ab3fa38ff~tplv-k3u1fbpfcp-watermark.image?" alt="musicVideo.gif"/>
+<img src="https://img.minganx.top/file/1751622657584_weixin.gif" alt="musicVideo.gif"/>
 
 ## 主要目录文件
 
@@ -42,15 +42,15 @@ title: 微信小程序-音乐播放器
 这里我使用的是 CDN 导入图标字体库，首先在阿里巴巴字体库找到自己所需的图标，将其添加到自己新建的项目中导入到本地项目中。具体操作如下：  
 **新建项目**
 在阿里巴巴图标库界面，点击`资源管理`，进入到`我的项目`中新建项目。
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e9d34e5ff9f44e89911d4e6d6b7f81bc~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](https://img.minganx.top/file/1751622995163_image.png)
 **将选中图标添加到项目**  
 首先将自己选中的图标添加入购物车，再点击购物车选择`添加到至项目`
-![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/07d0a7dd19e04565be8ff5cb894d0121~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](https://img.minganx.top/file/1751623033703_image.png)
 **复制代码，引入使用**
 在如下界面可以看到一个链接，点击后将显示页面的代码复制到微信小程序中自己新建的 iconont.wxss 文件中(不统一，这是我个人所建文件名)，最后在`app.wxss`文件中引用一下--`@import "static/font/iconfont.wxss"`路径为你自己创建文件的路径.
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1f07230cbcf641cf9ebcc11760c373a5~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](https://img.minganx.top/file/1751623056387_image.png)
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a0f02de6a1494bc5a942fa7699f15d65~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](https://img.minganx.top/file/1751623056387_image.png)
 
 小程序引入字体库的方式不局限于这一种，根据个人喜好和需求来即可，此处仅为作者个人使用方法。
 
@@ -139,7 +139,7 @@ http://music.163.com/song/media/outer/url?id=xxxxxxx.mp3
 
 **效果图**
 
-<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/94c20964dcef43428e667536453a525a~tplv-k3u1fbpfcp-watermark.image?" alt="image.png" />
+<img src="https://img.minganx.top/file/1751623122225_image.png" alt="image.png" />
 
 ## 功能部分
 
@@ -371,7 +371,7 @@ toTime(e) {
 
 ### 弹窗列表
 
-<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e9ccd1a76562433c9ec40423c026604e~tplv-k3u1fbpfcp-watermark.image?" alt="image.png" />
+<img src="https://img.minganx.top/file/1751623147630_image.png" alt="image.png" />
 
 #### 展示弹窗
 
@@ -448,4 +448,4 @@ change(e) {
 
 以上便是主要功能的代码实现，这里由于篇幅过长 css 样式并未给出，如需可以点击源码链接查看，如果觉得还不错的话，请给作者一个小小的赞吧! [源码链接](https://gitee.com/JCX2927917567/music)
 
-![b4730e00638c7c8a30b5f3abd77a2dcf.gif](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1c8f7f888ba84e0b967134f37892d12d~tplv-k3u1fbpfcp-watermark.image?)
+![1cdog.gif](https://img.minganx.top/file/1751623195971_1cdog.gif)

@@ -1,12 +1,22 @@
 <template>
   <div id="article_page" class="flex flex-col">
     <ArticleToc
-      class="hidden fixed position-right-7xl position-top-[6rem] lg:block w-220px h-[calc(100%-6rem)] overflow-y-auto"
+      class="hidden fixed position-right-[calc(50%-520px)] position-top-[6rem] lg:block w-220px h-[calc(100%-6rem)] overflow-y-auto"
       :toc="toc"
     />
+    <aside
+      class="fixed hidden lg:block position-left-[calc(50%-330px)] position-top-[8rem]"
+    >
+      <n-icon
+        class="cursor-pointer"
+        color="#07c160"
+        :size="24"
+        :component="LogoWechat"
+        @click="getInnerHTML()"
+      />
+    </aside>
     <!-- Render the blog post as Prose & Vue components -->
     <article ref="curMdContentRef">
-      <n-button @click="getInnerHTML()">复制内容</n-button>
       <ContentRenderer v-if="post" :value="post" class="prose md mx-auto" />
     </article>
     <div
@@ -36,6 +46,7 @@
 
 <script setup lang="ts">
 import { useMessage } from "naive-ui";
+import { LogoWechat } from "@vicons/ionicons5";
 const message = useMessage();
 definePageMeta({
   hideParent: true,
@@ -135,7 +146,7 @@ function findImgDom(dom?: HTMLElement | ChildNode): HTMLElement {
 function getContentDom() {
   const articleDom: any = curMdContentRef.value;
   // 默认内部会套一层div
-  const contentDom = articleDom && articleDom.childNodes[1];
+  const contentDom = articleDom && articleDom.childNodes[0];
   return contentDom;
 }
 function getOneDomCssStyle(childDom: any, pointCssAttrs: string[] = []) {
