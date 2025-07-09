@@ -1,20 +1,28 @@
 <template>
-  <div class="flex flex-1 max-md:flex-col">
+  <div
+    class="min-h-[calc(100vh-8rem)] flex flex-1 max-md:flex-col container mx-auto px-6"
+  >
     <div
-      class="position-relative left_content flex flex-col items-center justify-center flex-1 gap-4"
+      class="position-relative left_content flex flex-col items-center justify-center flex-1 gap-4 py-12"
     >
-      <span class="text-40px font-bold">Hi，I am Jasper</span>
-      <span class="text-20px">web developer</span>
-      <span class="text-center"
+      <span class="text-40px font-bold text-gray-900 dark:text-white"
+        >Hi，I am Jasper</span
+      >
+      <span class="text-20px text-gray-700 dark:text-gray-300"
+        >web developer</span
+      >
+      <span class="text-center text-gray-600 dark:text-gray-400 max-w-md"
         >「现实是此岸，理想是彼岸，中间隔着湍急的河流，行动则是架在河上的桥梁」</span
       >
     </div>
-    <div class="flex flex-col items-center justify-center flex-1 min-w-200px">
+    <div
+      class="flex flex-col items-center justify-center flex-1 min-w-200px py-12"
+    >
       <div class="relative">
         <img
           ref="source"
           class="w-200px h-200px rounded-50% opacity-0"
-          src="../assets/images/avatar.gif"
+          src="~/assets/images/306562_2.gif"
           alt=""
         />
         <div class="circle1"></div>

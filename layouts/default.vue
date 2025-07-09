@@ -1,9 +1,11 @@
 <template>
-  <div class="h-full flex flex-col pt-72px">
+  <div
+    class="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 flex flex-col"
+  >
     <AppHeader />
-    <div class="flex-1 flex mx-auto">
+    <main class="flex-1">
       <slot />
-    </div>
+    </main>
     <AppFooter />
   </div>
 </template>

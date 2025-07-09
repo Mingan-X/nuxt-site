@@ -5,7 +5,7 @@
         <n-icon
           size="20"
           color="#94a3b8"
-          :component="isDarkIcon ? MoonOutline : SunnyOutline"
+          :component="isDarkIcon ? MoonOutline : Sunny"
         />
       </n-button>
     </template>
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { SunnyOutline, MoonOutline } from "@vicons/ionicons5";
+import { Sunny, MoonOutline } from "@vicons/ionicons5";
 const colorMode = useColorMode();
 const isDarkIcon = ref(false);
 

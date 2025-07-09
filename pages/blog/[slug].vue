@@ -21,25 +21,31 @@
     </article>
     <div
       v-if="surround"
-      class="w-full px-4px grid grid-cols-4 gap-4 md:max-w-80ch!"
+      class="w-full px-4px grid grid-cols-2 gap-4 md:max-w-80ch! mx-auto"
     >
       <n-card
-        @click="$router.push(surround[0]?.path)"
+        @click="navigateToPost(surround[0]?.path)"
         hoverable
-        class="col-span-2 rounded-8px cursor-pointer"
+        class="rounded-8px cursor-pointer bg-white dark:bg-gray-800 dark:border-gray-700"
         v-if="surround[0]"
         title="上一篇"
       >
-        <p class="w-full text-truncate">{{ surround[0]?.title }}</p>
+        <p class="w-full text-truncate text-gray-900 dark:text-white">
+          {{ surround[0]?.title }}
+        </p>
       </n-card>
+      <div v-else></div>
       <n-card
-        @click="$router.push(surround[1]?.path)"
+        @click="navigateToPost(surround[1]?.path)"
         hoverable
-        class="text-right col-span-2 col-start-3 rounded-8px cursor-pointer"
+        class="text-right rounded-8px cursor-pointer bg-white dark:bg-gray-800 dark:border-gray-700"
         v-if="surround[1]"
         title="下一篇"
-        ><p class="w-full text-truncate">{{ surround[1]?.title }}</p></n-card
+        ><p class="w-full text-truncate text-gray-900 dark:text-white">
+          {{ surround[1]?.title }}
+        </p></n-card
       >
+      <div v-else></div>
     </div>
   </div>
 </template>
@@ -91,9 +97,60 @@ const EffectCssAttrs = [
 // 代码中，只有颜色属性有用
 const PreCodeCssAttrs = ["color"];
 
-const { data: post } = await useAsyncData(`article-${useRoute().path}`, () => {
-  return queryCollection("blog").path(useRoute().path).first();
-});
+const { data: post } = await useAsyncData(
+  `article-${useRoute().path}`,
+  async () => {
+    const currentPath = useRoute().path;
+
+    // Try multiple strategies to find the post
+    let foundPost = null;
+
+    // Strategy 1: Exact path match
+    foundPost = await queryCollection("blog").path(currentPath).first();
+    if (foundPost) return foundPost;
+
+    // Strategy 2: Decoded path match
+    const decodedPath = decodeURI(currentPath);
+    if (decodedPath !== currentPath) {
+      foundPost = await queryCollection("blog").path(decodedPath).first();
+      if (foundPost) return foundPost;
+    }
+
+    // Strategy 3: Search by slug parameter
+    const slug = useRoute().params.slug as string;
+    const allPosts = await queryCollection("blog").all();
+
+    // Try different slug variations
+    const slugVariations = [
+      slug,
+      decodeURIComponent(slug),
+      slug.replace(/%20/g, " "),
+      slug.replace(/\+/g, " "),
+      slug.replace(/-/g, " "),
+    ];
+
+    for (const variation of slugVariations) {
+      foundPost = allPosts.find((post: any) => {
+        const postPath = post._path?.replace("/blog/", "");
+        return (
+          postPath === variation ||
+          post.title === variation ||
+          post._file?.replace(".md", "") === variation
+        );
+      });
+      if (foundPost) return foundPost;
+    }
+
+    // Strategy 4: Fuzzy match by title
+    foundPost = allPosts.find((post: any) => {
+      const normalizedTitle = post.title?.toLowerCase().replace(/\s+/g, "");
+      const normalizedSlug = slug.toLowerCase().replace(/[%\-\+\s]+/g, "");
+      return normalizedTitle === normalizedSlug;
+    });
+
+    return foundPost;
+  }
+);
 useHead({
   title: post.value?.title || post.value?.title,
 });
@@ -107,6 +164,13 @@ const { data: surround } = await useAsyncData("surround", () => {
 });
 // @ts-ignore
 const toc = buildFullToc(post.value?.body.value) || [];
+
+// Navigation function to handle card clicks
+const navigateToPost = (path: string) => {
+  if (path) {
+    navigateTo(path);
+  }
+};
 
 function camelCaseToHyphen(str: string) {
   return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
@@ -279,5 +343,45 @@ async function getInnerHTML() {
 }
 :deep(.n-card) > .n-card__content {
   padding: 0 24px 10px 24px;
+}
+
+/* Dark theme card styles */
+:deep(.dark .n-card) {
+  background-color: rgb(31 41 55) !important;
+  border-color: rgb(55 65 81) !important;
+}
+
+/* Dark theme prose styles */
+:deep(.dark .prose) {
+  color: rgb(229 231 235);
+}
+
+:deep(.dark .prose h1),
+:deep(.dark .prose h2),
+:deep(.dark .prose h3),
+:deep(.dark .prose h4),
+:deep(.dark .prose h5),
+:deep(.dark .prose h6) {
+  color: rgb(255 255 255);
+}
+
+:deep(.dark .prose p),
+:deep(.dark .prose li) {
+  color: rgb(209 213 219);
+}
+
+:deep(.dark .prose code) {
+  color: rgb(249 115 22);
+  background-color: rgb(55 65 81);
+}
+
+:deep(.dark .prose pre) {
+  background-color: rgb(17 24 39);
+  border: 1px solid rgb(55 65 81);
+}
+
+:deep(.dark .prose blockquote) {
+  border-left-color: rgb(75 85 99);
+  color: rgb(156 163 175);
 }
 </style>
