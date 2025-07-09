@@ -1,0 +1,80 @@
+{
+  "git": {
+    "commitMessage": "chore: release v${version}",
+    "tagName": "v${version}",
+    "requireCleanWorkingDir": false,
+    "requireBranch": ["master", "main"],
+    "push": true,
+    "pushArgs": ["--follow-tags"]
+  },
+  "github": {
+    "release": true,
+    "releaseName": "Release v${version}",
+    "releaseNotes": null
+  },
+  "npm": {
+    "publish": false
+  },
+  "hooks": {
+    "before:init": ["git pull origin master"],
+    "after:bump": "echo 'Version bumped to ${version}'",
+    "after:release": "echo 'Released ${name} v${version} to ${repo.repository}'"
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          {
+            "type": "feat",
+            "section": "✨ Features"
+          },
+          {
+            "type": "fix",
+            "section": "🐛 Bug Fixes"
+          },
+          {
+            "type": "perf",
+            "section": "⚡ Performance Improvements"
+          },
+          {
+            "type": "revert",
+            "section": "⏪ Reverts"
+          },
+          {
+            "type": "docs",
+            "section": "📚 Documentation"
+          },
+          {
+            "type": "style",
+            "section": "💄 Styles"
+          },
+          {
+            "type": "refactor",
+            "section": "♻️ Code Refactoring"
+          },
+          {
+            "type": "test",
+            "section": "✅ Tests"
+          },
+          {
+            "type": "build",
+            "section": "👷 Build System"
+          },
+          {
+            "type": "ci",
+            "section": "🔧 Continuous Integration"
+          },
+          {
+            "type": "chore",
+            "section": "🔨 Chores",
+            "hidden": true
+          }
+        ]
+      },
+      "infile": "CHANGELOG.md",
+      "header": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n\n",
+      "strictSemVer": true
+    }
+  }
+}
