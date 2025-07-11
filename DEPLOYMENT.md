@@ -27,7 +27,8 @@
 确保你的 GitHub repository 有以下权限：
 
 - Actions 权限已启用
-- Workflow 有写入权限
+- 在 **Settings** > **Actions** > **General** 中，确保 **Workflow permissions** 设置为 "Read and write permissions"
+- 或者确保 **Allow GitHub Actions to create and approve pull requests** 已启用
 
 ### 3. 版本发布命令
 
