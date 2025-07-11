@@ -1,0 +1,29 @@
+name: 触发 Cloudflare Pages 部署
+
+on:
+  push:
+    tags:
+      - "v*" # 只在推送版本标签时触发
+
+jobs:
+  trigger-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 创建发布分支
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          # 创建或更新 release 分支
+          git checkout -B release
+
+          # 推送到 release 分支以触发 Cloudflare 部署
+          git push origin release --force
+
+          echo "✅ 已触发 Cloudflare Pages 部署 - 版本: ${{ github.ref_name }}"
