@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 
 
+## [0.1.1](https://github.com/Mingan-X/nuxt-site/compare/v0.1.0...v0.1.1) (2025-07-21)
+
+### ✨ Features
+
+* 添加懒加载组件和增强可访问性，更新页面语言属性 ([5b33b21](https://github.com/Mingan-X/nuxt-site/commit/5b33b211e5e8a562588a22a980494684ca53361a))
+* 添加收藏网站和分类功能，更新页面和主题配置 ([5d16644](https://github.com/Mingan-X/nuxt-site/commit/5d16644b3f98384d77dffe0789ea8836071c79bc))
+
+### 🐛 Bug Fixes
+
+* 修复安全漏洞并重构收藏页面 ([93a2297](https://github.com/Mingan-X/nuxt-site/commit/93a2297dbf9774e4da739cf9658c22e611103b70))
+
 ## 0.1.0 (2025-07-11)
 
 ### ✨ Features
