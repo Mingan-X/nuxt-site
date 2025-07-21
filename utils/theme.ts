@@ -3,9 +3,9 @@ import type { GlobalThemeOverrides } from "naive-ui";
 const themeOverrides: GlobalThemeOverrides = {
   common: {
     primaryColor: "#32324d",
-    infoColor: "#FDF4DC",
-    infoColorHover: "#FDF4DC",
-    infoColorPressed: "#FDF4DC",
+    // infoColor: "#FDF4DC",
+    // infoColorHover: "#FDF4DC",
+    // infoColorPressed: "#FDF4DC",
     warningColor: "#D9822F",
     warningColorHover: "#D9822F",
   },

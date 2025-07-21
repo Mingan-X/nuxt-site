@@ -30,5 +30,21 @@ export default defineContentConfig({
     //     rawbody: z.string(),
     //   }),
     // }),
+    // 收藏网站集合
+    favorites: defineCollection({
+      type: "data",
+      source: "favorites/*.json",
+      schema: z.object({
+        id: z.string(),
+        title: z.string(),
+        description: z.string(),
+        url: z.string(),
+        icon: z.string().optional(),
+        category: z.string(),
+        tags: z.array(z.string()),
+        addedDate: z.string(),
+        featured: z.boolean().optional(),
+      }),
+    }),
   },
 });
