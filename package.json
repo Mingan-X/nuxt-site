@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@css-render/vue3-ssr": "^0.15.14",
-    "@nuxt/content": "^3.6.1",
+    "@nuxt/content": "^3.6.3",
     "@vueuse/nuxt": "13.4.0",
     "animejs": "^4.0.2",
     "dayjs": "^1.11.13",
@@ -45,7 +45,10 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "better-sqlite3"
-    ]
+    ],
+    "overrides": {
+      "@nuxtjs/mdc": ">=0.17.2"
+    }
   },
   "version": "0.1.0"
 }
