@@ -33,6 +33,16 @@ nuxtApp.hook("page:start", () => {
 nuxtApp.hook("page:finish", () => {
   isFullLoading.value = false;
 });
+
+// 替换全屏加载为懒加载
+const FullLoading = defineAsyncComponent(() => 
+  import('~/components/FullLoading/index.vue')
+);
+
+// 懒加载粒子背景
+const ParticlesBg = defineAsyncComponent(() => 
+  import('~/components/ParticlesBg/index.vue')
+);
 </script>
 <style lang="less" scoped>
 .page-enter-active,

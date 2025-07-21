@@ -34,6 +34,7 @@
         <div class="flex items-center space-x-2">
           <!-- Search -->
           <n-button
+            aria-label="Search"
             text
             class="rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
             @click="showSearchModal"
