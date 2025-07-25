@@ -44,7 +44,7 @@
             <p
               class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 leading-relaxed"
             >
-              {{ item?.description || getExcerpt(item) }}
+              {{ item?.description }}
             </p>
 
             <div class="flex flex-wrap gap-2 mb-4" v-if="item?.tags?.length">
@@ -117,25 +117,11 @@ const getCategory = (item: any) => {
 };
 
 const getReadTime = (item: any) => {
-  // Estimate reading time based on content length
-  const content =
-    item?.body?.children
-      ?.map((child: any) => child?.children?.map((c: any) => c?.value).join(""))
-      .join("") || "";
+  const content = item?.rawbody;
   const wordsPerMinute = 200;
-  const words = content.length / 2; // Rough estimate for Chinese characters
+  const words = content.length / 2;
   const readTime = Math.max(1, Math.ceil(words / wordsPerMinute));
   return `${readTime} min read`;
-};
-
-const getExcerpt = (item: any) => {
-  // Extract excerpt from content
-  const content =
-    item?.body?.children
-      ?.find((child: any) => child?.tag === "p")
-      ?.children?.map((c: any) => c?.value)
-      .join("") || "";
-  return content.slice(0, 120) + (content.length > 120 ? "..." : "");
 };
 
 // Navigation function to handle card clicks
@@ -153,11 +139,6 @@ const navigateToPost = (path: string) => {
 :deep(.n-card) {
   border-radius: 12px !important;
   border: none !important;
-}
-
-:deep(.n-card:hover) {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
 }
 
 /* Dark theme card styles */

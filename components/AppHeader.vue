@@ -40,7 +40,7 @@
             @click="showSearchModal"
           >
             <template #icon>
-              <n-icon size="20"><SearchCircleOutline /></n-icon>
+              <n-icon color="#94a3b8" size="20"><SearchCircleOutline /></n-icon>
             </template>
           </n-button>
 
@@ -54,7 +54,7 @@
             title="RSS订阅"
           >
             <template #icon>
-              <n-icon size="20"><LogoRss /></n-icon>
+              <n-icon color="#94a3b8" size="18"><LogoRss /></n-icon>
             </template>
           </n-button>
 
@@ -75,7 +75,7 @@
               title="菜单"
             >
               <template #icon>
-                <n-icon size="20"><Menu /></n-icon>
+                <n-icon color="#94a3b8" size="20"><Menu /></n-icon>
               </template>
             </n-button>
           </n-dropdown>

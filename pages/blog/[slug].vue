@@ -26,7 +26,7 @@
       <n-card
         @click="navigateToPost(surround[0]?.path)"
         hoverable
-        class="rounded-8px cursor-pointer bg-white dark:bg-gray-800 dark:border-gray-700"
+        class="shadow rounded-8px cursor-pointer bg-white dark:bg-gray-800 dark:border-gray-700"
         v-if="surround[0]"
         title="上一篇"
       >
@@ -38,7 +38,7 @@
       <n-card
         @click="navigateToPost(surround[1]?.path)"
         hoverable
-        class="text-right rounded-8px cursor-pointer bg-white dark:bg-gray-800 dark:border-gray-700"
+        class="shadow text-right rounded-8px cursor-pointer bg-white dark:bg-gray-800 dark:border-gray-700"
         v-if="surround[1]"
         title="下一篇"
         ><p class="w-full text-truncate text-gray-900 dark:text-white">
